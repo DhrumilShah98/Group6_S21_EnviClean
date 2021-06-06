@@ -1,12 +1,12 @@
-import { CssBaseline } from '@material-ui/core';
 import './App.css';
 import { Navbar } from './component/Navbar/Navbar';
+import { PatronMember } from './component/PatronMember/PatronMember';
 
 function App() {
   return (
     <div>
-      <CssBaseline />
       <Navbar />
+      <PatronMember />
     </div>
   );
 }

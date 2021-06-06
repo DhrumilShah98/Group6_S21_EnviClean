@@ -5,6 +5,6 @@ export default makeStyles(() => ({
         flexGrow: 1,
     },
     navbar: {
-        backgroundColor: '#67840D',
+        backgroundColor: '#719D57',
     }
 }));
