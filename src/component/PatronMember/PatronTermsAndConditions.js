@@ -34,8 +34,8 @@ export const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
                 </DialogContentText>
             </DialogContent>
             <DialogActions style={{ backgroundColor: '#719D57' }} >
-                <Button style={{ color: '#FFFFFF' }} onClick={closeDialog}>Disagree</Button>
-                <Button style={{ color: '#FFFFFF' }} onClick={agreeTerms}>Agree</Button>
+                <Button style={{ color: '#FFFFFF' }} onClick={closeDialog}>Reject</Button>
+                <Button style={{ color: '#FFFFFF' }} onClick={agreeTerms}>Accept</Button>
             </DialogActions>
         </Dialog>
     );
