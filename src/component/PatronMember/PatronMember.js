@@ -7,10 +7,16 @@ import { PatronTermsAndConditions } from './PatronTermsAndConditions';
 export const PatronMember = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [agree, setAgree] = useState(false);
 
     const openDialog = () => { setOpen(true); }
 
     const closeDialog = () => { setOpen(false); }
+
+    const agreeTerms = () => {
+        setAgree(true);
+        closeDialog();
+    }
 
     return (
         <div className={classes.center}>
@@ -28,12 +34,16 @@ export const PatronMember = () => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button className={classes.button} style={{ backgroundColor: '#719D57' }} onClick={openDialog} size="large" variant="contained" fullWidth>
-                        Enroll as Patron
-                    </Button>
+                    {(agree) ?
+                        <Button className={classes.button} style={{ backgroundColor: '#719D57' }} size="large" variant="contained" fullWidth>
+                            Registerd successfully<br />Create your first post
+                        </Button> :
+                        <Button className={classes.button} style={{ backgroundColor: '#719D57' }} onClick={openDialog} size="large" variant="contained" fullWidth>
+                            Enroll as Patron
+                        </Button>}
                 </CardActions>
             </Card>
-            <PatronTermsAndConditions open={open} closeDialog={closeDialog} />
+            <PatronTermsAndConditions open={open} closeDialog={closeDialog} agreeTerms={agreeTerms} />
         </div>
     )
 }
