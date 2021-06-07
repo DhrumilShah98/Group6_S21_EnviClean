@@ -5,7 +5,7 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="right" ref={ref} {...props} />;
 });
 
-export const PatronTermsAndConditions = ({ open, closeDialog }) => {
+export const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
     return (
         <Dialog
             open={open}
@@ -35,7 +35,7 @@ export const PatronTermsAndConditions = ({ open, closeDialog }) => {
             </DialogContent>
             <DialogActions style={{ backgroundColor: '#719D57' }} >
                 <Button style={{ color: '#FFFFFF' }} onClick={closeDialog}>Disagree</Button>
-                <Button style={{ color: '#FFFFFF' }} onClick={closeDialog}>Agree</Button>
+                <Button style={{ color: '#FFFFFF' }} onClick={agreeTerms}>Agree</Button>
             </DialogActions>
         </Dialog>
     );
