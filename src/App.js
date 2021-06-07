@@ -4,7 +4,7 @@ import { PatronMember } from './component/PatronMember/PatronMember';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar />
       <PatronMember />
     </div>
