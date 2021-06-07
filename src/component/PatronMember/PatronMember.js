@@ -36,7 +36,7 @@ export const PatronMember = () => {
                 <CardActions>
                     {(agree) ?
                         <Button className={classes.button} style={{ backgroundColor: '#719D57' }} size="large" variant="contained" fullWidth>
-                            Registerd successfully<br />Create your first post
+                            Registered successfully<br />Create your first post
                         </Button> :
                         <Button className={classes.button} style={{ backgroundColor: '#719D57' }} onClick={openDialog} size="large" variant="contained" fullWidth>
                             Enroll as Patron
