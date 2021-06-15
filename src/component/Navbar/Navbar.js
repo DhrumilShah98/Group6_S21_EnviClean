@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './styles';
 
-export const Navbar = () => {
+const Navbar = () => {
     const theme = useTheme();
     const isMobileDevice = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -72,3 +72,5 @@ export const Navbar = () => {
         </div>
     );
 };
+
+export default Navbar;

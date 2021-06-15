@@ -5,7 +5,7 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="right" ref={ref} {...props} />;
 });
 
-export const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
+const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
     return (
         <Dialog
             open={open}
@@ -40,3 +40,5 @@ export const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
         </Dialog>
     );
 };
+
+export default PatronTermsAndConditions;

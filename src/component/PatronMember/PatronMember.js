@@ -1,11 +1,13 @@
 import patronMemberImg from '../../images/patron_member.png';
 import { Card, CardContent, Paper, Typography, CssBaseline, Button, Avatar, CardActions } from '@material-ui/core';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
-import { PatronTermsAndConditions } from './PatronTermsAndConditions';
+import PatronTermsAndConditions from './PatronTermsAndConditions';
 
-export const PatronMember = () => {
+const PatronMember = () => {
     const classes = useStyles();
+    const history = useHistory();
     const [open, setOpen] = useState(false);
     const [agree, setAgree] = useState(false);
 
@@ -16,6 +18,10 @@ export const PatronMember = () => {
     const agreeTerms = () => {
         setAgree(true);
         closeDialog();
+    }
+
+    const viewPatronPosts = () => {
+        history.push('/patron/posts');
     }
 
     return (
@@ -35,7 +41,7 @@ export const PatronMember = () => {
                 </CardContent>
                 <CardActions>
                     {(agree) ?
-                        <Button className={classes.button} style={{ backgroundColor: '#719D57' }} size="large" variant="contained" fullWidth>
+                        <Button className={classes.button} onClick={viewPatronPosts} style={{ backgroundColor: '#719D57' }} size="large" variant="contained" fullWidth>
                             Registered successfully<br />Create your first post
                         </Button> :
                         <Button className={classes.button} style={{ backgroundColor: '#719D57' }} onClick={openDialog} size="large" variant="contained" fullWidth>
@@ -47,3 +53,5 @@ export const PatronMember = () => {
         </div>
     )
 }
+
+export default PatronMember;
