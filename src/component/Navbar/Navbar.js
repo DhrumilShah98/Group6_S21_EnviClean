@@ -26,8 +26,8 @@ const Navbar = () => {
             <AppBar position="static" className={classes.navbar}>
                 <Container>
                     <Toolbar>
-                        <Link to="/" style={{ textDecoration: 'none' }}>
-                            <Button className={classes.button} >
+                        <Link to="/" className={classes.titleLink}>
+                            <Button fullWidth>
                                 <Typography variant="h5" className={classes.title}>EnviClean</Typography>
                             </Button>
                         </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
                                         onClose={handleClose}>
                                         <MenuItem onClick={handleClose}>Jobs</MenuItem>
                                         <MenuItem onClick={handleClose}>Deposits</MenuItem>
-                                        <MenuItem onClick={handleClose}>Patron</MenuItem>
+                                        <MenuItem onClick={handleClose}> <Link to="/patron" style={{ color: '#000000', textDecoration: 'none' }}>Patron</Link></MenuItem>
                                         <MenuItem onClick={handleClose}>FAQ</MenuItem>
                                         <MenuItem onClick={handleClose}>Settings</MenuItem>
                                     </Menu>

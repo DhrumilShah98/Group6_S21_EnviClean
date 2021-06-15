@@ -7,6 +7,13 @@ export default makeStyles((theme) => ({
     navbar: {
         backgroundColor: '#719D57',
     },
+    titleLink: {
+        color: '#FFFFFF',
+        [theme.breakpoints.down("xs")]: {
+            flexGrow: 1,
+        },
+        textDecoration: 'none',
+    },
     title: {
         [theme.breakpoints.down("xs")]: {
             flexGrow: 1,
@@ -15,8 +22,5 @@ export default makeStyles((theme) => ({
     },
     button: {
         color: '#FFFFFF',
-        [theme.breakpoints.down("xs")]: {
-            flexGrow: 1,
-        }
-    },
+    }
 }));

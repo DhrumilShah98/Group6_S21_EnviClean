@@ -2,7 +2,7 @@ import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './component/Navbar/Navbar';
 import PatronMember from './component/PatronMember/PatronMember';
-import Home from './component/Home/Home';
+import PatronHome from './component/PatronHome/PatronHome';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" />
           <Route exact path="/patron" component={PatronMember} />
-          <Route exact path="/patron/posts" component={Home} />
+          <Route exact path="/patron/posts" component={PatronHome} />
         </Switch>
       </BrowserRouter>
     </div>

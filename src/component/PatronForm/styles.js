@@ -1,13 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(4),
+        padding: theme.spacing(2),
+    },
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
         },
-    },
-    paper: {
-        padding: theme.spacing(2),
     },
     form: {
         display: 'flex',
@@ -19,6 +20,13 @@ export default makeStyles((theme) => ({
         margin: '10px 0',
     },
     buttonSubmit: {
+        backgroundColor: '#719D57',
+        color: '#FFFFFF',
         marginBottom: 10,
-    },
+        '& .Mui-disabled': { backgroundColor: '#E0E0E0' },
+        '&:hover': {
+            backgroundColor: '#719D57',
+            color: '#FFFFFF',
+        },
+    }
 }));

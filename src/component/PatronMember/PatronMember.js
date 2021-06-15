@@ -1,9 +1,9 @@
-import patronMemberImg from '../../images/patron_member.png';
-import { Card, CardContent, Paper, Typography, CssBaseline, Button, Avatar, CardActions } from '@material-ui/core';
 import React, { useState } from 'react';
+import { Card, CardContent, Paper, Typography, CssBaseline, Button, Avatar, CardActions } from '@material-ui/core';
+import PatronTermsAndConditions from './PatronTermsAndConditions';
+import patronMemberImg from '../../images/patron_member.png';
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
-import PatronTermsAndConditions from './PatronTermsAndConditions';
 
 const PatronMember = () => {
     const classes = useStyles();

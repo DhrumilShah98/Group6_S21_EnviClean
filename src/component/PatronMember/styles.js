@@ -1,7 +1,10 @@
 import { makeStyles } from "@material-ui/core";
-
+import dustbinBackground from '../../images/dustbin_background.jpg';
 export default makeStyles(() => ({
     center: {
+        backgroundImage: `url(${dustbinBackground})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

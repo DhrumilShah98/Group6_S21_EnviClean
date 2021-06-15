@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import useStyles from './styles.js';
 
-const Form = () => {
+const Form = ({ patronPosts, setPatronPosts }) => {
     const classes = useStyles();
     const [formData, setFormData] = useState({ streetAddress: '', city: '', province: '', zipCode: '', selectedFile: '' });
     const [errors, setErrors] = useState({ streetAddressValid: false, cityValid: false, provinceValid: false, zipCodeValid: false, selectedFileValid: false });
@@ -16,7 +16,7 @@ const Form = () => {
         }
     };
 
-    const clear = () => {
+    const clearFormData = () => {
         setFormData({ streetAddress: '', city: '', province: '', zipCode: '', selectedFile: '' });
         setErrors({ streetAddressValid: false, cityValid: false, provinceValid: false, zipCodeValid: false, selectedFileValid: false });
     }
@@ -28,7 +28,7 @@ const Form = () => {
                     errors["streetAddress"] = "Street address is required."
                     errors["streetAddressValid"] = false;
                 } else {
-                    errors["streetAddress"] = ''
+                    errors["streetAddress"] = "";
                     errors["streetAddressValid"] = true;
                 }
                 break;
@@ -37,7 +37,7 @@ const Form = () => {
                     errors["city"] = "City is required."
                     errors["cityValid"] = false;
                 } else {
-                    errors["city"] = ''
+                    errors["city"] = "";
                     errors["cityValid"] = true;
                 }
                 break;
@@ -46,7 +46,7 @@ const Form = () => {
                     errors["province"] = "Province is required."
                     errors["provinceValid"] = false;
                 } else {
-                    errors["province"] = ''
+                    errors["province"] = "";
                     errors["provinceValid"] = true;
                 }
                 break;
@@ -59,7 +59,7 @@ const Form = () => {
                     errors["zipCode"] = "Please enter a valid zip code."
                     errors["zipCodeValid"] = false;
                 } else {
-                    errors["zipCode"] = ''
+                    errors["zipCode"] = "";
                     errors["zipCodeValid"] = true;
                 }
                 break;
@@ -68,7 +68,7 @@ const Form = () => {
                     errors["selectedFile"] = "Image is required."
                     errors["selectedFileValid"] = false;
                 } else {
-                    errors["selectedFile"] = ''
+                    errors["selectedFile"] = "";
                     errors["selectedFileValid"] = true;
                 }
                 break;
@@ -89,15 +89,17 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateFormData()) {
-            //ToDo: Add post
-            clear();
+            formData["_id"] = patronPosts.length + 1;
+            formData["createdAt"] = new Date().toISOString();
+            setPatronPosts(patronPosts => [...patronPosts, formData]);
+            clearFormData();
         }
     };
 
     return (
-        <Paper className={classes.paper}>
-            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">Post the Garbage</Typography>
+        <Paper className={classes.paper} elevation={6}>
+            <form className={`${classes.root} ${classes.form}`} autoComplete="off" noValidate>
+                <Typography variant="h6">Post Garbage</Typography>
                 <TextField
                     fullWidth
                     margin="normal"
@@ -155,15 +157,18 @@ const Form = () => {
                         type="file"
                         multiple={false}
                         label="Garbage Image"
-                        onDone={({ base64 }) => setFormData({ ...formData, selectedFile: base64 })} />
+                        onDone={({ base64 }) => {
+                            setFormData({ ...formData, selectedFile: base64 })
+                            setErrors({ ...errors, selectedFile: "", selectedFileValid: true })
+                        }} />
                 </div>
                 <Button
-                    disabled={!validateFormData()}
                     className={classes.buttonSubmit}
+                    disabled={!validateFormData()}
                     variant="contained"
-                    color="primary"
                     size="large"
                     type="submit"
+                    onClick={handleSubmit}
                     fullWidth>Submit</Button>
             </form>
         </Paper>
