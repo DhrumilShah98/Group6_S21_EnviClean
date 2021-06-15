@@ -91,6 +91,8 @@ const Form = ({ patronPosts, setPatronPosts }) => {
         if (validateFormData()) {
             formData["_id"] = patronPosts.length + 1;
             formData["createdAt"] = new Date().toISOString();
+            formData["myPost"] = true;
+            formData["display"] = true;
             setPatronPosts(patronPosts => [...patronPosts, formData]);
             clearFormData();
         }
