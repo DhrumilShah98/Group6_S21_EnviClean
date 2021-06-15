@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, Container, Button, useMediaQuery, useTheme } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './styles';
 
@@ -25,9 +26,11 @@ export const Navbar = () => {
             <AppBar position="static" className={classes.navbar}>
                 <Container>
                     <Toolbar>
-                        <Button className={classes.button} >
-                            <Typography variant="h5" className={classes.title}>EnviClean</Typography>
-                        </Button>
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <Button className={classes.button} >
+                                <Typography variant="h5" className={classes.title}>EnviClean</Typography>
+                            </Button>
+                        </Link>
                         <div>
                             {(isMobileDevice) ?
                                 <div>
@@ -58,7 +61,7 @@ export const Navbar = () => {
                                 <div>
                                     <Button className={classes.button}>Jobs</Button>
                                     <Button className={classes.button}>Deposits</Button>
-                                    <Button className={classes.button}>Patron</Button>
+                                    <Link to="/patron" style={{ textDecoration: 'none' }}><Button className={classes.button}>Patron</Button></Link>
                                     <Button className={classes.button}>FAQ</Button>
                                     <Button className={classes.button}>Settings</Button>
                                 </div>}
