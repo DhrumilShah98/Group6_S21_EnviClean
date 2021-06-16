@@ -3,7 +3,7 @@ import { Grid, CircularProgress } from '@material-ui/core';
 import PatronPost from './PatronPost/PatronPost';
 import useStyles from './styles.js';
 
-const PatronPosts = ({ patronPosts }) => {
+const PatronPosts = ({ patronPosts, deletePost }) => {
     const classes = useStyles();
 
     return (
@@ -12,9 +12,8 @@ const PatronPosts = ({ patronPosts }) => {
             (<Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {patronPosts.map((patronPost) => {
                     if (patronPost.display) {
-                        console.log(patronPost.display + "  " + patronPost.city);
                         return <Grid key={patronPost._id} item xs={12} sm={6} md={4}>
-                            <PatronPost patronPost={patronPost} />
+                            <PatronPost patronPost={patronPost} deletePost={deletePost} />
                         </Grid>
                     } else {
                         return null;

@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: '56.25%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
         backgroundBlendMode: 'darken',
     },
     overlay: {
@@ -25,5 +25,12 @@ export default makeStyles((theme) => ({
         marginTop: theme.spacing(1),
         backgroundColor: '#759B22',
         color: '#FFFFFF',
-    }
+    },
+    cardContent: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexGrow: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
 }));
