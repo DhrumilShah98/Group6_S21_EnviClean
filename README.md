@@ -3,8 +3,8 @@
 ## EnviClean
 Keeping the environment clean is our motive. Hence the project name EnviClean. It is a garbage collection management system developed by Advanced Web Services - Group 6.
 
-* *Date Created*: 07 06 2021
-* *Last Modification Date*: 07 06 2021
+* *Date Created*: 16 06 2021
+* *Last Modification Date*: 16 06 2021
 
 ### Links
 * *Prototype* - <https://www.figma.com/file/EgFQpTL3LK6oXDuZcObkhA/Dhrumil-Amish-Shah-A1-EnviClean>
@@ -57,23 +57,6 @@ All deployment options can be found at [https://facebook.github.io/create-react-
 * [Visual Studio Code](https://code.visualstudio.com/download) - The source code editor used
 * [Google Chrome](https://www.google.com/intl/en_in/chrome/) - Browser used to visualize the changes
 
-### External Dependencies Used
-* [@material-ui/core](https://material-ui.com/) - Material-UI provides easy to use React components for faster web development. Below is the list of main components I used for creating this webpage:
-    * [App Bar](https://material-ui.com/components/app-bar/) - To provide navigation feature in the application.
-    * [Card](https://material-ui.com/components/cards/) - To display information related to a single topic of interest.
-    * [Dialog](https://material-ui.com/components/dialogs/) - To display information regarding a task or crucial information. It requires users to provide a confirmation decision.
-
-* [@material-ui/icons](https://material-ui.com/components/material-icons/) - Material-UI provides ready to use icons. Below is the list of icons I used for creating this webpage:
-    * MenuIcon - To display a menu icon on the navigation bar for devices with smaller screen sizes. For example, mobile devices and tablets.
-
-### Sources Used and Acknowledgments
-* [Webpage Background Image](https://github.com/DhrumilShah98/dhrumil-amish-shah-assignment-1-enviclean/blob/main/src/images/dustbin_background.jpg)
-    * Original source - [Misty Suburban Neighborhood](https://unsplash.com/photos/MwKhY91v2Dc)
-    * Author - [Shane Rounce](https://unsplash.com/@shanerounce)
-* [Patron Member Image](https://github.com/DhrumilShah98/dhrumil-amish-shah-assignment-1-enviclean/blob/main/src/images/patron_member.png)
-    * Original source - [Bhavyata Foundation](http://new.bhavyata.com/wp-content/uploads/2021/04/icon-2@4x-e1618571684684-180x180.png)
-    * Author - [Bhavyata Foundation](http://new.bhavyata.com/)
-* [Green Lime Persian Image](https://in.pinterest.com/pin/828803137652290892/?d=t&mt=login) - Green color palette
 ### Instructor
 * [@gmosqueraj](https://github.com/gmosqueraj)
 
