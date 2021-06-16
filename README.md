@@ -7,10 +7,7 @@ Keeping the environment clean is our motive. Hence the project name EnviClean. I
 * *Last Modification Date*: 16 06 2021
 
 ### Links
-* *Prototype* - <https://www.figma.com/file/EgFQpTL3LK6oXDuZcObkhA/Dhrumil-Amish-Shah-A1-EnviClean>
-* *Prototype Video Link* - <https://www.figma.com/proto/EgFQpTL3LK6oXDuZcObkhA/Dhrumil-Amish-Shah-A1-EnviClean?node-id=1%3A2&scaling=scale-down&page-id=0%3A1>
-* *GIT Repository* - <https://github.com/DhrumilShah98/dhrumil-amish-shah-assignment-1-enviclean>
-* *URL* - <https://dhrumil-amish-shah-a1enviclean.herokuapp.com/>
+* *GIT Repository* - <https://github.com/DhrumilShah98/Group6_S21_EnviClean>
 
 ### Authors
 * [Dhrumil Amish Shah](dh416386@dal.ca) - *(Creator)*
