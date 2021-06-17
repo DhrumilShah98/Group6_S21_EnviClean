@@ -12,17 +12,16 @@ function AboutUs() {
                     </p>
                     <div className="block has-text-centered-mobile">
                         <p className="is-size-6 py-2">
-                            The EnviClean aims to keep the city clean from scattered garbage bags. The main mission
-                            of EnviClean is to support the <b>Swach Bharath Abhiyan</b> scheme.
+                            We area group of five Master graduates who are keen to keep our society clean.
                         </p>
                         <p className="is-size-6 py-2">
-                            Apart from picking up the regular household garbage, EnviClean provides you an opportunity
-                            to let the Garbage pickers in your locality about the trash in the streets through the
-                            <b> Patron</b> program.
+                            We continuously seek help from various NGO and governmental organizations who
+                            can pick the Trash from residential areas.
                         </p>
                         <p className="is-size-6 py-2">
-                            Motivating the systematic Trash deposition by rewarding the customers with EnviCoins,
-                            which holds the power to purchase your favorite brand coupons.
+                            We aim to make this platform stronger by inviting various volunteers from the National
+                            Social Service community and thrive to acheive the United Nation Sustainability Development.
+                            Goal number 6.
                         </p>
                     </div>
                 </div>
