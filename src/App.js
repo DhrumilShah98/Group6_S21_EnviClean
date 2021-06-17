@@ -4,7 +4,7 @@ import Navbar from './component/Navbar/NavBarComponent';
 import PatronMember from './component/Patron/PatronMember/PatronMember';
 import PatronHome from './component/Patron/PatronHome/PatronHome';
 import DepositorLandingPage from "./component/Home/DepositorLandingPage";
-
+import Depositor from "./component/DepositorManagement/DepositorHome/DepositorHome";
 function App() {
   return (
     <div>
@@ -15,6 +15,7 @@ function App() {
           <Route exact path="/" component={DepositorLandingPage}/>
           <Route exact path="/patron" component={PatronMember} />
           <Route exact path="/patron/posts" component={PatronHome} />
+          <Route exact path= "/depositor" componet = {Depositor} />
         </Switch>
       </BrowserRouter>
     </div>
