@@ -25,7 +25,7 @@ function CreateDeposit() {
         autoComplete="off"
         noValidate
       >
-        <Typography variant="h6">Deposit Garbage</Typography>
+        <Typography variant="h6" style= {{color:"green", fontWeight: 600}}>Deposit Garbage</Typography>
         <TextField className = {`${classes.text}`}
           fullWidth
           margin="normal"
@@ -115,7 +115,7 @@ function CreateDeposit() {
           error={errors.weight ? true:false}
           helperText={errors.weight}
         />
-        <FormControl component="fieldset" error = {errors.schedule ? true:false}className= {classes.form}>
+        <FormControl component="fieldset" error = {errors.schedule ? true:false}className= {classes.form} >
           <FormLabel component="legend">Schedule Deposit</FormLabel>
           <RadioGroup
             row

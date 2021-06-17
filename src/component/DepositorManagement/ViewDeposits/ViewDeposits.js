@@ -6,8 +6,8 @@ function ViewDeposits() {
   console.log(dummyViewData.length);
 
   return (
-    <div>
-      <Typography variant="h6">My Deposits</Typography>
+    <div style= {{paddingTop: 50}}>
+      <Typography variant="h6" style= {{color:"green", fontWeight: 600}}>My Deposits</Typography>
       <Grid
         className={classes.container}
         container

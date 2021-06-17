@@ -14,6 +14,7 @@ export default makeStyles((theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
+        align:"left"
     },
     fileInput: {
         width: '97%',
@@ -28,8 +29,9 @@ export default makeStyles((theme) => ({
         // '&:hover': {
         //     backgroundColor: '#719D57',
         //     color: '#FFFFFF',
-        // },
+        // },    
     },
+    
     text:{
         error: {
             "&.MuiFormHelperText-root.Mui-error" :{

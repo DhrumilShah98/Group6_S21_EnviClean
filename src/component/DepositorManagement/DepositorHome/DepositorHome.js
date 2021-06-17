@@ -7,7 +7,7 @@ function DepositorHome() {
     const classes = useStyles();
   return (
     <Grow in>
-    <Container>
+    <Container  style={{ marginTop: 30 }}>
     <Grid className={classes.mainContainer} container justify="space-between" alignItems="stretch">
     <Grid item xs={12} md={7}>
         <ViewDeposits></ViewDeposits>
