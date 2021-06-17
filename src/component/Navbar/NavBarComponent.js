@@ -38,17 +38,17 @@ function NavBarComponent() {
             {
                 id: "deposit",
                 title: "Deposit",
-                url: "",
+                url: "/depositor",
                 item_data: [
                     {
                         id: "scheduleDeposit",
                         name: "Book new",
-                        url: ""
+                        url: "/depositor"
                     },
                     {
                         id: "myDeposits",
                         name: "My Deposits",
-                        url: ""
+                        url: "/depositor"
                     }
                 ]
             },

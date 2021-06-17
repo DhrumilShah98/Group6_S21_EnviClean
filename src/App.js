@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" component={DepositorLandingPage}/>
           <Route exact path="/patron" component={PatronMember} />
           <Route exact path="/patron/posts" component={PatronHome} />
-          <Route exact path= "/depositor" componet = {Depositor} />
+          <Route exact path= "/depositor" component = {Depositor} />
         </Switch>
       </BrowserRouter>
     </div>
