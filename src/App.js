@@ -4,7 +4,7 @@ import Navbar from './component/Home/navbar/NavBarComponent';
 import PatronMember from './component/patron/PatronMember/PatronMember';
 import PatronHome from './component/patron/PatronHome/PatronHome';
 import DepositorLandingPage from "./component/Home/DepositorLandingPage";
-import Footer from "./component/Home/Footer"
+import Footer from "./component/Footer/Footer"
 
 function App() {
   return (
