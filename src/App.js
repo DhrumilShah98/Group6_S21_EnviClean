@@ -4,6 +4,7 @@ import Navbar from './component/Home/navbar/NavBarComponent';
 import PatronMember from './component/patron/PatronMember/PatronMember';
 import PatronHome from './component/patron/PatronHome/PatronHome';
 import DepositorLandingPage from "./component/Home/DepositorLandingPage";
+import Footer from "./component/Home/Footer"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/patron" component={PatronMember} />
           <Route exact path="/patron/posts" component={PatronHome} />
         </Switch>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

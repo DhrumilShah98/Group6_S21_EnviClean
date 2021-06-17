@@ -21,17 +21,17 @@ function NavBarComponent() {
                     {
                         id: "aboutUs",
                         name: "About us",
-                        url: ""
-                    },
-                    {
-                        id: "contactUs",
-                        name: "Contact us",
-                        url: ""
+                        url: "#aboutUs"
                     },
                     {
                         id : "why",
                         name: "Why EnviClean?",
-                        url: ""
+                        url: "#why"
+                    },
+                    {
+                        id: "contactUs",
+                        name: "Contact us",
+                        url: "#contactUs"
                     }
                 ]
             } ,
