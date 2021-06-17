@@ -1,0 +1,17 @@
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../node_modules/bulma/sass/utilities/functions";
+
+$green : #154001;
+$green-invert : findColorInvert($green);
+
+$primary : $green;
+$primary-invert : $green-invert;
+
+$navbar-dropdown-background-color : #F2F2F2;
+$navbar-dropdown-item-hover-color: #60A62E;
+$navbar-dropdown-item-color : $primary;
+$modal-card-title-color : $primary;
+$modal-card-head-background-color: #F2F2F2;
+$modal-card-body-background-color : #F2F2F2;
+
+@import "../../node_modules/bulma/bulma";

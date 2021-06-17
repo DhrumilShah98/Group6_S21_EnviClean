@@ -1,8 +1,9 @@
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from './component/Navbar/Navbar';
-import PatronMember from './component/PatronMember/PatronMember';
-import PatronHome from './component/PatronHome/PatronHome';
+import Navbar from './component/Home/navbar/NavBarComponent';
+import PatronMember from './component/patron/PatronMember/PatronMember';
+import PatronHome from './component/patron/PatronHome/PatronHome';
+import DepositorLandingPage from "./component/Home/DepositorLandingPage";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <CssBaseline />
         <Navbar />
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={DepositorLandingPage}/>
           <Route exact path="/patron" component={PatronMember} />
           <Route exact path="/patron/posts" component={PatronHome} />
         </Switch>

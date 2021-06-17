@@ -1,0 +1,42 @@
+.bg-image {
+  background: url('../assets/landing_hero.svg') no-repeat center center fixed;
+  background-size: contain;
+  color: #154001;
+}
+.title  {
+  color: #154001;
+}
+
+.subtitle {
+  color: #154001;
+}
+
+
+.left-image {
+  background-image: url('../assets/human_with_waste.svg');
+  background-size: 68%, 68%;
+  background-position: bottom left;
+  margin-bottom: 0.7%;
+  background-repeat: no-repeat;
+}
+
+.right-image {
+  background-image: url('../assets/dustbin.svg');
+  background-size: 65%, 65%;
+  background-position: bottom right;
+  margin-bottom: 0.7%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1023px) {
+  .bg-image {
+    background: url('../assets/landing_hero.svg') no-repeat center center fixed;
+    background-size: auto;
+  }
+
+}
+
+.modal-card-content-text {
+  align-content: center;
+  color: #154001;
+}
