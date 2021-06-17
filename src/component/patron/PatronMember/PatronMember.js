@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Paper, Typography, CssBaseline, Button, Avatar, CardActions } from '@material-ui/core';
 import PatronTermsAndConditions from './PatronTermsAndConditions';
-import patronMemberImg from '../../../images/patron_member.png';
+import patronMemberImg from '../../../assets/patron_member.png';
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
 
@@ -41,10 +41,10 @@ const PatronMember = () => {
                 </CardContent>
                 <CardActions>
                     {(agree) ?
-                        <Button className={classes.button} onClick={viewPatronPosts} style={{ backgroundColor: '#719D57' }} size="large" variant="contained" fullWidth>
+                        <Button className={classes.button} onClick={viewPatronPosts} style={{ backgroundColor: '#154001' }} size="large" variant="contained" fullWidth>
                             Registered successfully<br />Create your first post
                         </Button> :
-                        <Button className={classes.button} style={{ backgroundColor: '#719D57' }} onClick={openDialog} size="large" variant="contained" fullWidth>
+                        <Button className={classes.button} style={{ backgroundColor: '#154001' }} onClick={openDialog} size="large" variant="contained" fullWidth>
                             Enroll as Patron
                         </Button>}
                 </CardActions>

@@ -1,6 +1,6 @@
-import garbagePhoto1 from '../../../images/garbage_photo_1.jpg';
-import garbagePhoto2 from '../../../images/garbage_photo_2.jpg';
-import garbagePhoto3 from '../../../images/garbage_photo_3.jpg';
+import garbagePhoto1 from '../../../assets/garbage_photo_1.jpg';
+import garbagePhoto2 from '../../../assets/garbage_photo_2.jpg';
+import garbagePhoto3 from '../../../assets/garbage_photo_3.jpg';
 
 const dummyPatronFormData = [
     {

@@ -20,12 +20,12 @@ export default makeStyles((theme) => ({
         margin: '10px 0',
     },
     buttonSubmit: {
-        backgroundColor: '#719D57',
+        backgroundColor: '#154001',
         color: '#FFFFFF',
         marginBottom: 10,
         '& .Mui-disabled': { backgroundColor: '#E0E0E0' },
         '&:hover': {
-            backgroundColor: '#719D57',
+            backgroundColor: '#154001',
             color: '#FFFFFF',
         },
     }

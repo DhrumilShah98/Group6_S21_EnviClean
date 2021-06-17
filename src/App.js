@@ -1,10 +1,9 @@
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from './component/Home/navbar/NavBarComponent';
-import PatronMember from './component/patron/PatronMember/PatronMember';
-import PatronHome from './component/patron/PatronHome/PatronHome';
+import Navbar from './component/Navbar/NavBarComponent';
+import PatronMember from './component/Patron/PatronMember/PatronMember';
+import PatronHome from './component/Patron/PatronHome/PatronHome';
 import DepositorLandingPage from "./component/Home/DepositorLandingPage";
-import Footer from "./component/Footer/Footer"
 
 function App() {
   return (

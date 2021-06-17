@@ -1,11 +1,11 @@
-import logo from '../../../assets/logo_enviclean.svg'
-import profileIcon from '../../../assets/profile_icon.svg'
-import NavBarDropDownItemComponent from "./NavBarDropDownItemComponent";
-import React, {useState} from "react";
-import NotificationModalComponent from "../NotificationModalComponent";
+import logo from '../../assets/logo_enviclean.svg'
+import profileIcon from '../../assets/profile_icon.svg'
+import NavBarDropDownItemComponent from '../Navbar/NavBarDropDownItemComponent';
+import React, { useState } from "react";
+import NotificationModalComponent from '../Home/NotificationModalComponent';
 
 function NavBarComponent() {
-    const[modalState, setModalState] = useState(false);
+    const [modalState, setModalState] = useState(false);
 
     function toggleBurgerMenu() {
         document.querySelector('.navbar-menu').classList.toggle('is-active');
@@ -14,7 +14,7 @@ function NavBarComponent() {
     let menu_data = {
         menu_items: [
             {
-                id : "mission",
+                id: "mission",
                 title: "The Mission",
                 url: "",
                 item_data: [
@@ -24,7 +24,7 @@ function NavBarComponent() {
                         url: "#aboutUs"
                     },
                     {
-                        id : "why",
+                        id: "why",
                         name: "Why EnviClean?",
                         url: "#why"
                     },
@@ -34,9 +34,9 @@ function NavBarComponent() {
                         url: "#contactUs"
                     }
                 ]
-            } ,
+            },
             {
-                id : "deposit",
+                id: "deposit",
                 title: "Deposit",
                 url: "",
                 item_data: [
@@ -53,7 +53,7 @@ function NavBarComponent() {
                 ]
             },
             {
-                id : "patron",
+                id: "patron",
                 title: "Patron",
                 url: "/patron",
                 item_data: [
@@ -70,10 +70,10 @@ function NavBarComponent() {
         <nav className="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <a className="navbar-item" href="/">
-                    <img src={logo} width="370" height="71" alt="Welcome to EnviClean"/>
+                    <img src={logo} width="370" height="71" alt="Welcome to EnviClean" />
                 </a>
                 <button className="navbar-burger" aria-label="menu" aria-expanded="false"
-                        data-target="navbarBasicExample" onClick={toggleBurgerMenu}>
+                    data-target="navbarBasicExample" onClick={toggleBurgerMenu}>
                     <span aria-hidden="true">  </span>
                     <span aria-hidden="true">  </span>
                     <span aria-hidden="true">  </span>
@@ -81,14 +81,14 @@ function NavBarComponent() {
             </div>
             <div id="enviNavBar" className="navbar-menu px-6">
                 <div className="navbar-end">
-                    <NavBarDropDownItemComponent menu_data={menu_data}/>
+                    <NavBarDropDownItemComponent menu_data={menu_data} />
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a id="settings" className="navbar-link" href="/">
                             Settings
                         </a>
                         <div className="navbar-dropdown">
-                            <a id="notifications" className="navbar-item"
-                               onClick={() => setModalState(!modalState)}>
+                            <a id="notifications" className="navbar-item" href="/#"
+                                onClick={() => setModalState(!modalState)}>
                                 Notifications
                             </a>
                             <NotificationModalComponent
@@ -101,7 +101,7 @@ function NavBarComponent() {
                         </div>
                     </div>
                     <div className="navbar-item">
-                        <img alt="Group 6" src={profileIcon}/>
+                        <img alt="Group 6" src={profileIcon} />
                     </div>
                 </div>
             </div>

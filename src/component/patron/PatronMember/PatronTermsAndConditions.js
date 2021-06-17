@@ -15,7 +15,7 @@ const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
             onClose={closeDialog}
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description">
-            <DialogTitle style={{ backgroundColor: '#719D57', color: '#FFFFFF' }} id="alert-dialog-slide-title">{"EnviClean Patron Terms and Conditions"}</DialogTitle>
+            <DialogTitle style={{ backgroundColor: '#154001', color: '#FFFFFF' }} id="alert-dialog-slide-title">{"EnviClean Patron Terms and Conditions"}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et ipsum eget tellus facilisis ornare. Vestibulum ipsum est, vulputate vel neque pulvinar, luctus tempus neque. Praesent cursus et nisl in consequat. Nam turpis risus, porttitor vel tellus at, fringilla dictum justo. Aliquam vel purus euismod, semper tellus id, ultricies turpis. Quisque feugiat imperdiet massa, ut hendrerit nunc sagittis non. Aliquam sit amet semper sapien. Maecenas fermentum lacus justo, vitae feugiat libero sodales quis. Pellentesque dignissim hendrerit nisl sit amet malesuada. In ipsum magna, porta vel diam fringilla, pulvinar mattis ex. Proin et sodales nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In laoreet rutrum odio, id varius magna sodales eu. Curabitur vestibulum ex non gravida varius. Sed tristique luctus nunc et blandit. Fusce maximus mattis fermentum.
@@ -33,7 +33,7 @@ const PatronTermsAndConditions = ({ open, closeDialog, agreeTerms }) => {
                     Duis hendrerit lacinia nibh, ut dignissim neque blandit vitae. In laoreet erat imperdiet arcu euismod pharetra. Vestibulum a ultricies dolor, id bibendum libero. Cras at placerat ante, et placerat nunc. Sed sollicitudin tincidunt sagittis. Proin a enim in erat fermentum facilisis in a ligula. Curabitur non massa vitae quam imperdiet imperdiet vitae ac elit. Sed eu porta lorem. Vivamus sagittis augue purus, vel interdum est dignissim placerat.
                 </DialogContentText>
             </DialogContent>
-            <DialogActions style={{ backgroundColor: '#719D57' }} >
+            <DialogActions style={{ backgroundColor: '#154001' }} >
                 <Button style={{ color: '#FFFFFF' }} onClick={closeDialog}>Reject</Button>
                 <Button style={{ color: '#FFFFFF' }} onClick={agreeTerms}>Accept</Button>
             </DialogActions>

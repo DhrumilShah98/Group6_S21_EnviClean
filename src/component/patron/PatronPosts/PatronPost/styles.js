@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
     },
     activeChip: {
         marginTop: theme.spacing(1),
-        backgroundColor: '#759B22',
+        backgroundColor: '#60A62E',
         color: '#FFFFFF',
     },
     cardContent: {

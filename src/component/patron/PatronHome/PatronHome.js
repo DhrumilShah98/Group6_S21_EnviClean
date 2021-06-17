@@ -77,7 +77,7 @@ const PatronHome = () => {
 
     return (
         <Grow in>
-            <Container>
+            <Container style={{ marginTop: 56 }}>
                 <Grid container direction="row" justify="space-between" alignItems="center">
                     <Grid item xs={12} sm={12} md={2}>
                         {(viewMyPosts) ?
@@ -89,7 +89,7 @@ const PatronHome = () => {
                                 View All Posts
                             </Button> :
                             <Button
-                                style={{ marginTop: '6px', backgroundColor: '#719D57', color: '#FFFFFF', height: 55, width: 180 }}
+                                style={{ marginTop: '6px', backgroundColor: '#154001', color: '#FFFFFF', height: 55, width: 180 }}
                                 variant="contained"
                                 size="large"
                                 onClick={toggleViewMyPosts}>

@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import dustbinBackground from '../../../images/dustbin_background.jpg';
+import dustbinBackground from '../../../assets/dustbin_background.jpg';
 export default makeStyles(() => ({
     center: {
         backgroundImage: `url(${dustbinBackground})`,
@@ -8,7 +8,7 @@ export default makeStyles(() => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '91.5vh',
+        height: '100vh',
         overflow: 'hidden',
     },
     card: {
