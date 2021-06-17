@@ -14,6 +14,10 @@
   color: #154001;
 }
 
+.card {
+  background-color: #F2F2F2;
+}
+
 
 .left-image {
   background-image: url('../../../assets/human_with_waste.svg');

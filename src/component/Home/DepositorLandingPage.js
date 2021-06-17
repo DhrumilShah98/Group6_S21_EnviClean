@@ -2,6 +2,7 @@ import './stylesheets/enviclean.css'
 import HeroComponent from "./HeroComponent";
 import AboutUs from "./AboutUs";
 import WhyComponent from "./WhyComponent";
+import Footer from "../Footer/Footer";
 
 function DepositorLandingPage() {
 
@@ -10,6 +11,7 @@ function DepositorLandingPage() {
             <HeroComponent/>
             <WhyComponent />
             <AboutUs />
+            <Footer />
         </section>
     );
 }

@@ -17,7 +17,6 @@ function App() {
           <Route exact path="/patron" component={PatronMember} />
           <Route exact path="/patron/posts" component={PatronHome} />
         </Switch>
-        <Footer/>
       </BrowserRouter>
     </div>
   );
