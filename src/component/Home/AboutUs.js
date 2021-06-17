@@ -1,4 +1,4 @@
-import '../../stylesheets/index.css';
+import './stylesheets/index.css'
 import AboutUsImg from '../../assets/about us.svg'
 
 function AboutUs() {
@@ -12,7 +12,7 @@ function AboutUs() {
                     </p>
                     <div className="block has-text-centered-mobile">
                         <p className="is-size-6 py-2">
-                            We area group of five Master graduates who are keen to keep our society clean.
+                            We are a group of five Master graduates who are keen to keep our society clean.
                         </p>
                         <p className="is-size-6 py-2">
                             We continuously seek help from various NGO and governmental organizations who

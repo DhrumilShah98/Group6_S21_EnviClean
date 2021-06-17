@@ -1,5 +1,5 @@
 import CircleClick from '../../assets/circle_tick.svg';
-import '../../stylesheets/index.css';
+import './stylesheets/index.css';
 
 function HeroComponent() {
     return (

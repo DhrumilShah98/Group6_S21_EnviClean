@@ -1,5 +1,5 @@
 .bg-image {
-  background: url('../assets/landing_hero.svg') no-repeat center center fixed;
+  background: url('../../../assets/landing_hero.svg') no-repeat center center fixed;
   background-size: contain;
   color: #154001;
 }
@@ -10,10 +10,13 @@
 .subtitle {
   color: #154001;
 }
+.block {
+  color: #154001;
+}
 
 
 .left-image {
-  background-image: url('../assets/human_with_waste.svg');
+  background-image: url('../../../assets/human_with_waste.svg');
   background-size: 68%, 68%;
   background-position: bottom left;
   margin-bottom: 0.7%;
@@ -21,7 +24,7 @@
 }
 
 .right-image {
-  background-image: url('../assets/dustbin.svg');
+  background-image: url('../../../assets/dustbin.svg');
   background-size: 65%, 65%;
   background-position: bottom right;
   margin-bottom: 0.7%;
@@ -30,7 +33,7 @@
 
 @media (max-width: 1023px) {
   .bg-image {
-    background: url('../assets/landing_hero.svg') no-repeat center center fixed;
+    background: url('../../../assets/landing_hero.svg') no-repeat center center fixed;
     background-size: auto;
   }
 

@@ -1,5 +1,5 @@
-@import "../../node_modules/bulma/sass/utilities/initial-variables";
-@import "../../node_modules/bulma/sass/utilities/functions";
+@import "../../../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../../../node_modules/bulma/sass/utilities/functions";
 
 $green : #154001;
 $green-invert : findColorInvert($green);
@@ -14,4 +14,4 @@ $modal-card-title-color : $primary;
 $modal-card-head-background-color: #F2F2F2;
 $modal-card-body-background-color : #F2F2F2;
 
-@import "../../node_modules/bulma/bulma";
+@import "../../../../node_modules/bulma/bulma";

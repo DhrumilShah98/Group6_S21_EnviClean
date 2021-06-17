@@ -55,18 +55,13 @@ function NavBarComponent() {
             {
                 id : "patron",
                 title: "Patron",
-                url: "",
+                url: "/patron",
                 item_data: [
                     {
-                        id: "reportGarbage",
-                        name: "Report now",
+                        id: "patronHome",
+                        name: "Patron Home",
                         url: "/patron"
                     },
-                    {
-                        id: "myReports",
-                        name: "My Reports",
-                        url: "/patron/posts"
-                    }
                 ]
             }
         ]

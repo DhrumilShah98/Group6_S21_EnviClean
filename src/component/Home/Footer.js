@@ -1,4 +1,4 @@
-import '../../stylesheets/index.css'
+import './stylesheets/index.css'
 function Footer() {
     return (
         <footer className="footer has-background-primary">

@@ -1,5 +1,4 @@
-import '../../stylesheets/enviclean.css'
-import NavBarComponent from "./navbar/NavBarComponent";
+import './stylesheets/enviclean.css'
 import HeroComponent from "./HeroComponent";
 import AboutUs from "./AboutUs";
 import WhyComponent from "./WhyComponent";
