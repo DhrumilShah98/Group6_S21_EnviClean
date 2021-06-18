@@ -21,11 +21,6 @@ export default makeStyles((theme) => ({
         left: '20px',
         color: 'white',
     },
-    activeChip: {
-        marginTop: theme.spacing(1),
-        backgroundColor: '#759B22',
-        color: '#FFFFFF',
-    },
     cardContent: {
         display: 'flex',
         flexDirection: 'row',
@@ -35,6 +30,11 @@ export default makeStyles((theme) => ({
     },
     Typography:{
         color: "#000000",
+    },
+    button:{
+        display:"flex",
+        backgroundColor: "#FFFFFF",
+        justifyContent:"flex-end",
     },
     
 }));

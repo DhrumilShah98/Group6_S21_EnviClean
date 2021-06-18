@@ -11,7 +11,7 @@ function CreateDeposit() {
         className={`${classes.root} ${classes.form}`}
         autoComplete="off"
         noValidate>
-        <Typography variant="h6" style={{ color: "green", fontWeight: 600 }}>Deposit Garbage</Typography>
+        <Typography variant="h6" style={{ color: "#154001", fontWeight: 600 }}>Deposit Garbage</Typography>
         <TextField className={`${classes.text}`}
           fullWidth
           margin="normal"
