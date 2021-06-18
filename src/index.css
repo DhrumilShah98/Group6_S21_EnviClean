@@ -1,3 +1,116 @@
 body {
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
+}
+
+.enviclean-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-container,
+.login-container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form,
+.login-form {
+    width: 40%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-heading {
+    font-weight: bold;
+}
+
+.login-form {
+    height: auto !important;
+}
+
+.signup-form p,
+.login-form p {
+    font-size: 24px;
+    text-transform: capitalize;
+    color: #154001;
+    width: 100%;
+    text-align: center;
+}
+
+.signup-form input.first,
+.login-form input.first {
+    margin-top: 0px;
+}
+
+.signup-form input,
+.login-form input {
+    width: 80%;
+    height: 24px;
+    background: none;
+    border: 1px solid #154001;
+    padding: 4px 10px;
+    color: #154001 !important;
+    margin-top: 10px;
+}
+
+.signup-form select,
+.login-form select {
+    width: 80%;
+    height: 24px;
+    background: none;
+    border: 1px solid #154001;
+    padding: 4px 10px;
+    color: #154001;
+    margin-top: 10px;
+}
+
+.signup-form select option,
+.login-form select option {
+    color: #000000;
+}
+
+.signup-button,
+.login-button {
+    margin-top: 20px;
+}
+
+.error-msg {
+    margin: 6px 0px 0px 0px;
+    font-size: 0.8em !important;
+    text-transform: none !important;
+    width: 80% !important;
+    color: #e25757 !important;
+}
+
+@media (max-width: 900px) {
+    .signup-form,
+    .login-form {
+        width: 55%;
+    }
+    .signup-error,
+    .login-error {
+        width: 55%;
+    }
+}
+
+@media (max-width: 500px) {
+    .signup-form,
+    .login-form {
+        width: 80%;
+    }
+    .signup-error,
+    .login-error {
+        width: 80%;
+    }
 }
