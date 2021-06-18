@@ -1,13 +1,13 @@
 import dummyViewData from "./DummyDepositData";
-import { Card, CardContent, Typography, Grid, Button } from "@material-ui/core";
+import { Card, CardContent, CardActions, Typography, Grid, Button } from "@material-ui/core";
 import useStyles from "./styles.js";
 function ViewDeposits() {
   const classes = useStyles();
   console.log(dummyViewData.length);
 
   return (
-    <div style= {{paddingTop: 50}}>
-      <Typography variant="h6" style= {{color:"green", fontWeight: 600}}>My Deposits</Typography>
+    <div style={{ paddingTop: 50 }}>
+      <Typography variant="h6" style={{ color: "green", fontWeight: 600 }}>My Deposits</Typography>
       <Grid
         className={classes.container}
         container
@@ -54,21 +54,18 @@ function ViewDeposits() {
                       gutterBottom
                     >{`Scheduled : ${data.schedule}`}</Typography>
                   </CardContent>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    style={{ marginBottom: 3 }}
-                  >
-                    Modify
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.button}
-                  >
-                    Delete
-                  </Button>
+                  <CardActions>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#154001", color: "#FFFFFF" }}>
+                      Modify
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#F44336", color: "#FFFFFF" }}>
+                      Delete
+                    </Button>
+                  </CardActions>
                 </Card>
               </Grid>
             );

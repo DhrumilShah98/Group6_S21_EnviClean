@@ -1,18 +1,5 @@
 import useStyles from "./styles.js";
-import {
-  TextField,
-  Button,
-  Typography,
-  Paper,
-  FormControl,
-  FormControlLabel,
-  Checkbox,
-  FormLabel,
-  FormGroup,
-  FormHelperText,
-  RadioGroup,
-  Radio,
-} from "@material-ui/core";
+import { TextField, Button, Typography, Paper, FormControl, FormControlLabel, Checkbox, FormLabel, FormGroup, FormHelperText, RadioGroup, Radio } from "@material-ui/core";
 import UseForm from "./UseForm.js";
 
 function CreateDeposit() {
@@ -23,10 +10,9 @@ function CreateDeposit() {
       <form
         className={`${classes.root} ${classes.form}`}
         autoComplete="off"
-        noValidate
-      >
-        <Typography variant="h6" style= {{color:"green", fontWeight: 600}}>Deposit Garbage</Typography>
-        <TextField className = {`${classes.text}`}
+        noValidate>
+        <Typography variant="h6" style={{ color: "green", fontWeight: 600 }}>Deposit Garbage</Typography>
+        <TextField className={`${classes.text}`}
           fullWidth
           margin="normal"
           size="small"
@@ -38,15 +24,13 @@ function CreateDeposit() {
           required
           value={values.taskname}
           onChange={handleChange}
-          error={errors.taskname ? true:false}
-          helperText={errors.taskname}
-        />
+          error={errors.taskname ? true : false}
+          helperText={errors.taskname} />
         <FormControl
           required
           component="fieldset"
           className={classes.formControl}
-          error = {errors.garbagetype ? true:false}
-        >
+          error={errors.garbagetype ? true : false}>
           <FormLabel component="legend">Garbage Type</FormLabel>
           <FormGroup row>
             <FormControlLabel
@@ -56,11 +40,9 @@ function CreateDeposit() {
                   name="drywaste"
                   value={values.garbagetype.drywaste}
                   id="drywaste"
-                  color="primary"
-                />
+                  color="primary" />
               }
-              label="Dry"
-            />
+              label="Dry" />
             <FormControlLabel
               control={
                 <Checkbox
@@ -68,11 +50,9 @@ function CreateDeposit() {
                   name="wetwaste"
                   value={values.garbagetype.wetwaste}
                   id="wetwaste"
-                  color="primary"
-                />
+                  color="primary" />
               }
-              label="Wet"
-            />
+              label="Wet" />
             <FormControlLabel
               control={
                 <Checkbox
@@ -80,11 +60,9 @@ function CreateDeposit() {
                   name="medicalwaste"
                   value={values.garbagetype.medicalwaste}
                   id="medicalwaste"
-                  color="primary"
-                />
+                  color="primary" />
               }
-              label="Medical"
-            />
+              label="Medical" />
             <FormControlLabel
               control={
                 <Checkbox
@@ -92,11 +70,9 @@ function CreateDeposit() {
                   name="others"
                   value={values.garbagetype.others}
                   id="others"
-                  color="primary"
-                />
+                  color="primary" />
               }
-              label="Others"
-            />
+              label="Others" />
           </FormGroup>
           <FormHelperText>{errors.garbagetype}</FormHelperText>
         </FormControl>
@@ -112,10 +88,9 @@ function CreateDeposit() {
           required
           value={values.weight}
           onChange={handleChange}
-          error={errors.weight ? true:false}
-          helperText={errors.weight}
-        />
-        <FormControl component="fieldset" error = {errors.schedule ? true:false}className= {classes.form} >
+          error={errors.weight ? true : false}
+          helperText={errors.weight} />
+        <FormControl component="fieldset" error={errors.schedule ? true : false} className={classes.form} >
           <FormLabel component="legend">Schedule Deposit</FormLabel>
           <RadioGroup
             row
@@ -123,24 +98,19 @@ function CreateDeposit() {
             name="schedule"
             value={values.schedule}
             onChange={handleChange}
-            defaultValue="Once"
-            
-          >
+            defaultValue="Once">
             <FormControlLabel
               value="Once"
               control={<Radio color="primary" />}
-              label="Once"
-            />
+              label="Once" />
             <FormControlLabel
               value="Daily"
               control={<Radio color="primary" />}
-              label="Daily"
-            />
+              label="Daily" />
             <FormControlLabel
               value="Weekly"
               control={<Radio color="primary" />}
-              label="Weekly"
-            />
+              label="Weekly" />
           </RadioGroup>
         </FormControl>
         <TextField
@@ -155,21 +125,20 @@ function CreateDeposit() {
           required
           value={values.datetime}
           onChange={handleChange}
-          error={errors.datetime ? true:false}
+          error={errors.datetime ? true : false}
           helperText={errors.datetime}
           InputLabelProps={{
             shrink: true,
           }}
           inputProps={{
-            min: `${new Date().getFullYear()}-${`${
-              new Date().getMonth() + 1
-            }`.padStart(2, 0)}-${`${new Date().getDate() + 1}`.padStart(
-              2,
-              0
-            )}T${`${new Date().getHours()}`.padStart(
-              2,
-              0
-            )}:${`${new Date().getMinutes()}`.padStart(2, 0)}`,
+            min: `${new Date().getFullYear()}-${`${new Date().getMonth() + 1
+              }`.padStart(2, 0)}-${`${new Date().getDate() + 1}`.padStart(
+                2,
+                0
+              )}T${`${new Date().getHours()}`.padStart(
+                2,
+                0
+              )}:${`${new Date().getMinutes()}`.padStart(2, 0)}`,
           }}
         />
         <TextField
@@ -186,9 +155,8 @@ function CreateDeposit() {
           rows={3}
           value={values.address}
           onChange={handleChange}
-          error = {errors.address ? true:false}
-          helperText={errors.address}
-        />
+          error={errors.address ? true : false}
+          helperText={errors.address} />
         <TextField
           fullWidth
           margin="normal"
@@ -201,9 +169,8 @@ function CreateDeposit() {
           required
           value={values.pincode}
           onChange={handleChange}
-          error = {errors.pincode ? true:false}
-          helperText={errors.pincode}
-        />
+          error={errors.pincode ? true : false}
+          helperText={errors.pincode} />
         <TextField
           fullWidth
           margin="normal"
@@ -216,9 +183,8 @@ function CreateDeposit() {
           required
           value={values.phonenumber}
           onChange={handleChange}
-          error = {errors.phonenumber ? true:false}
-          helperText={errors.phonenumber}
-        />
+          error={errors.phonenumber ? true : false}
+          helperText={errors.phonenumber} />
         <TextField
           fullWidth
           margin="normal"
@@ -230,16 +196,14 @@ function CreateDeposit() {
           variant="outlined"
           value={values.instructions}
           onChange={handleChange}
-          helperText={errors.instructions}
-        />
+          helperText={errors.instructions} />
         <Button
           className={classes.buttonSubmit}
           variant="contained"
           size="large"
           type="submit"
           onClick={handleSubmit}
-          style= {{backgroundColor:"#00ff00"}}
-        >
+          style={{ backgroundColor: "#154001" }}>
           Deposit Now
         </Button>
       </form>

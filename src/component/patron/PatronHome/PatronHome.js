@@ -108,7 +108,6 @@ const PatronHome = () => {
           alignItems="center"
         >
           <Grid item xs={12} sm={12} md={2}>
-            {" "}
             {viewMyPosts ? (
               <Button
                 style={{
@@ -122,7 +121,7 @@ const PatronHome = () => {
                 size="large"
                 onClick={toggleViewMyPosts}
               >
-                View All Posts{" "}
+                View All Posts
               </Button>
             ) : (
               <Button
@@ -137,10 +136,10 @@ const PatronHome = () => {
                 size="large"
                 onClick={toggleViewMyPosts}
               >
-                View My Posts{" "}
+                View My Posts
               </Button>
-            )}{" "}
-          </Grid>{" "}
+            )}
+          </Grid>
           <Grid item xs={12} sm={12} md={10}>
             <TextField
               fullWidth
@@ -153,9 +152,9 @@ const PatronHome = () => {
               autoComplete="off"
               required
               onChange={filterPatronPosts}
-            />{" "}
-          </Grid>{" "}
-        </Grid>{" "}
+            />
+          </Grid>
+        </Grid>
         <Grid
           className={classes.mainContainer}
           container
@@ -163,16 +162,16 @@ const PatronHome = () => {
           alignItems="stretch"
         >
           <Grid item xs={12} md={7}>
-            <PatronPosts patronPosts={patronPosts} deletePost={deletePost} />{" "}
-          </Grid>{" "}
+            <PatronPosts patronPosts={patronPosts} deletePost={deletePost} />
+          </Grid>
           <Grid item xs={12} md={4}>
             <PatronForm
               patronPosts={patronPosts}
               setPatronPosts={setPatronPosts}
-            />{" "}
-          </Grid>{" "}
-        </Grid>{" "}
-      </Container>{" "}
+            />
+          </Grid>
+        </Grid>
+      </Container>
     </Grow>
   );
 };
