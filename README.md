@@ -11,6 +11,10 @@ Keeping the environment clean is our motive. Hence the project name EnviClean. I
 
 ### Authors
 * [Dhrumil Amish Shah](dh416386@dal.ca) - *(Creator)*
+* [Parth Dinesh Thummar](parth.thummar@dal.ca) - *(Creator)*
+* [Sriram Attanti](r601872@dal.ca) - *(Creator)*
+* [Srikrishnan Sengottai Kasi](srikrishnan.sk@dal.ca) - *(Creator)*
+* [Vishal Dipak Parmar](vs301167@dal.ca) - *(Creator)*
 
 ### Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). According to the [React Documentation](https://reactjs.org/docs/create-a-new-react-app.html), create-react-app is one of the officially supported ways to create single-page applications in React.
