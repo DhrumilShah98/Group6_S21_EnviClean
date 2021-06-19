@@ -67,12 +67,99 @@ function NavBarComponent() {
                 ],
             },
         ],
+<<<<<<< Updated upstream
     };
     return (
         <nav
             className="navbar is-primary is-fixed-top"
             role="navigation"
             aria-label="main navigation"
+=======
+      },
+      {
+        id: "deposit",
+        title: "Deposit",
+        url: "/depositor",
+        item_data: [
+          {
+            id: "scheduleDeposit",
+            name: "Book new",
+            url: "/depositor",
+          },
+          {
+            id: "myDeposits",
+            name: "My Deposits",
+            url: "/depositor",
+          },
+        ],
+      },
+      {
+        id: "collect",
+        title: "Collect",
+        url: "/collector",
+        item_data: [
+          {
+            id: "collect",
+            name: "Collect",
+            url: "/collector",
+          },
+        ],
+      },
+      {
+        id: "patron",
+        title: "Patron",
+        url: "/patron",
+        item_data: [
+          {
+            id: "patronHome",
+            name: "Patron Home",
+            url: "/patron",
+          },
+        ],
+      },
+      {
+        id: "login",
+        title: "Login",
+        url: "/login",
+        item_data: [
+          {
+            id: "login",
+            name: "Login",
+            url: "/login",
+          },
+        ],
+      },
+      {
+        id: "signup",
+        title: "Sign Up",
+        url: "/signup",
+        item_data: [
+          {
+            id: "signup",
+            name: "Sign Up",
+            url: "/signup",
+          },
+        ],
+      },
+    ],
+  };
+  return (
+    <nav
+      className="navbar is-primary is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div className="navbar-brand">
+        <a className="navbar-item" href="/">
+          <img src={logo} width="370" height="71" alt="Welcome to EnviClean" />
+        </a>
+        <button
+          className="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+          onClick={toggleBurgerMenu}
+>>>>>>> Stashed changes
         >
             <div className="navbar-brand">
                 <a className="navbar-item" href="/">
