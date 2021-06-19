@@ -213,7 +213,7 @@ class SignupPage extends React.Component {
     }
   };
 
-  submitForm = () => {
+  submitForm = (event) => {
     let validForm =
       this.state.validFname &&
       this.state.validLname &&
@@ -228,7 +228,7 @@ class SignupPage extends React.Component {
       this.state.validCnfPassword;
     this.setState({ validForm: validForm });
     if (validForm) {
-      this.props.history.push("patron");
+      this.props.history.push("/");
     }
   };
 

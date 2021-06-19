@@ -21,7 +21,7 @@ const PatronMember = () => {
     }
 
     const viewPatronPosts = () => {
-        history.push('/patron/posts');
+        history.push('/Patron/posts');
     }
 
     return (

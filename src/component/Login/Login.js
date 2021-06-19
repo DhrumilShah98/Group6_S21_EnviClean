@@ -68,7 +68,7 @@ class LoginPage extends React.Component {
     let validForm = this.state.validEmail && this.state.validPassword;
     this.setState({ validForm: validForm });
     if (validForm) {
-      this.props.history.push("patron");
+      this.props.history.push("Patron");
     }
   };
 

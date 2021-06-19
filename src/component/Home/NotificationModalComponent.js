@@ -1,11 +1,27 @@
+import {useState} from "react";
+
 function NotificationModalComponent(props) {
+    const [savedMessage, setSavedMessage] = useState("");
     if (!props.modalState) {
         return null;
     }
 
+    function handleCloseNotification(event) {
+        event.preventDefault();
+        setSavedMessage("");
+    }
+
     function handleSave(event) {
         event.preventDefault();
-        console.log("model save handled");
+        let savedMessageContent = [];
+        savedMessageContent.push(
+            <div className="notification is-primary">
+                <button className="delete" onClick={handleCloseNotification}>
+                </button>
+                Hurray!! Preference saved!
+            </div>
+        );
+        setSavedMessage(savedMessageContent);
     }
 
     return (
@@ -13,6 +29,7 @@ function NotificationModalComponent(props) {
         <div className="modal is-active">
             <div className="modal-background" onClick={props.closeModal}/>
             <div className="modal-card">
+                {savedMessage}
                 <header className="modal-card-head">
                     <p className="modal-card-title is-size-5">
                         Notification Preferences
