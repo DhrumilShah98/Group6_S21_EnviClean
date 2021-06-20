@@ -16,35 +16,12 @@ export default makeStyles((theme) => ({
         justifyContent: 'center',
         align:"left"
     },
-    fileInput: {
-        width: '97%',
-        margin: '10px 0',
-    },
     buttonSubmit: {
         backgroundColor: '#719D57',
         color: '#FFFFFF',
         margin: 10,
-        marginBottom: 10,
-         '& .Mui-disabled': { backgroundColor: '#E0E0E0' },
-        // '&:hover': {
-        //     backgroundColor: '#719D57',
-        //     color: '#FFFFFF',
-        // },    
+        marginBottom: 10,  
     },
     
-    text:{
-        error: {
-            "&.MuiFormHelperText-root.Mui-error" :{
-              color: theme.palette.common.white,
-            },
-    },
-    formControl:{
-        align:"left",
-        margin:10,
-    },
-    radio:{
-        align:"left",
-        padding:0
-    }
 
-}}));
+}));
