@@ -1,7 +1,8 @@
 import { useState, useEffect} from "react";
 import Validation from "./Validation";
 
-function UseForm() {
+function UseForm(edit) {
+
   const [values, setValues] = useState({
     taskname: "",
     garbagetype: {
@@ -32,6 +33,7 @@ function UseForm() {
         ...values,
         [event.target.name]: event.target.value,
       });
+      console.log(values)
     }
   }
 
@@ -54,6 +56,12 @@ function UseForm() {
         pincode: "",
         phonenumber: "",
       });
+      }
+     if (edit != null)
+      {
+        setValues({
+          ...edit
+        });
     }
      //eslint-disable-next-line
   }, [errors]);

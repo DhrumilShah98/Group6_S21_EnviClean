@@ -5,18 +5,26 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import ModifyDeposit from "../ModifyDeposit/ModifyDeposit";
 import DeleteDeposit from "../DeleteDeposit/DeleteDeposit";
+import { useState } from "react";
+import PopUp from "../CommonFiles/PopUp";
 function ViewDeposits() {
-  const classes = useStyles();
 
-  function handleModify(id)
+  const classes = useStyles();
+  const [openEdit, setopenEdit] =useState(false);
+  const [id, setId]= useState("");
+  const [openDelete, setopenDelete] =useState(false);
+  const [edit, setEdit]= useState("null");
+  function handleModify(data)
   {
-    console.log("entered"+id)
-    ModifyDeposit(id)
+    console.log("entered" + data.id)
+    console.log(data)
+    setEdit(data)
+    setopenEdit(true)
   }
   function handleDelete(id)
   {
-    console.log("entered delete"+id)
-    DeleteDeposit(id)
+    setId(id)
+    setopenDelete(true)
   }
   
   if (!dummyViewData.length){
@@ -81,16 +89,14 @@ function ViewDeposits() {
                   </CardContent>
                   <div className = {classes.button}>
                     <IconButton 
-                      
                       variant="contained"
-                      onClick= {()=>handleModify(data._id)}>
+                      onClick= {()=>handleModify(data)}>
                         <EditIcon style={{ color: '#154001' }}>
                       Modify
                       </EditIcon>
                     </IconButton>
                     <IconButton
-                      variant="contained"
-                      onClick={()=>handleDelete(data._id)}>
+                      variant="contained"  onClick = {()=>handleDelete(data._id)}>
                         <DeleteIcon style={{ color: '#F44336' }}>
                       Delete
                       </DeleteIcon>
@@ -101,6 +107,10 @@ function ViewDeposits() {
             );
         })}
       </Grid>
+      <PopUp open = {openEdit} setopen = {setopenEdit} heading = {"Update Deposit"} onClose = {()=>setopenEdit(false)}>
+      <ModifyDeposit edit ={edit}></ModifyDeposit>
+        </PopUp>
+          <DeleteDeposit open = {openDelete} setopen= {setopenDelete } onClose = {()=>setopenDelete(false)} id = {id}></DeleteDeposit>
     </div>
   );
       }

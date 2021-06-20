@@ -1,16 +1,13 @@
 import useStyles from "./styles.js";
-import { TextField, Typography, FormControl, FormControlLabel, Checkbox, FormLabel, FormGroup, FormHelperText, RadioGroup, Radio } from "@material-ui/core";
+import { TextField, FormControl, FormControlLabel, Checkbox, FormLabel, FormGroup, FormHelperText, RadioGroup, Radio } from "@material-ui/core";
 
 function DepositForm(props)
 {
     const { handleChange, values, errors } = props;
     const classes = useStyles();
     return(
-    <form
-        className={`${classes.root} ${classes.form}`}
-        autoComplete="off"
-        noValidate>
-        <Typography variant="h6" style={{ color: "#154001", fontWeight: 600 }}>Deposit Garbage</Typography>
+    
+      <div>
         <TextField className={`${classes.text}`}
           fullWidth
           margin="normal"
@@ -196,6 +193,6 @@ function DepositForm(props)
           value={values.instructions}
           onChange={handleChange}
           helperText={errors.instructions} />
-      </form>);
+      </div>);
 }
 export default DepositForm

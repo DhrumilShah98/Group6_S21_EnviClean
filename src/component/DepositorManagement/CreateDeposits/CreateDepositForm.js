@@ -1,5 +1,5 @@
 import useStyles from "./styles.js";
-import { Button,  Paper} from "@material-ui/core";
+import { Button,  Paper, Typography} from "@material-ui/core";
 import UseForm from "../CommonFiles/UseForm.js";
 import DepositForm from "../CommonFiles/DepositForm.js";
 
@@ -12,6 +12,7 @@ function CreateDeposit() {
         className={`${classes.root} ${classes.form}`}
         autoComplete="off"
         noValidate>
+          <Typography variant="h6" style={{ color: "#154001", fontWeight: 600 }}>Deposit Garbage</Typography>
       <DepositForm 
       handleChange= {handleChange}
       values= {values}
