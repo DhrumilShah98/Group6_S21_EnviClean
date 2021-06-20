@@ -59,20 +59,33 @@ function NavBarComponent() {
     function signOut(event) {
         event.preventDefault();
         localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("imageUrl");
         window.location.reload();
     }
 
     const navBarEndDisplayHtml = [];
     if (isLoggedIn) {
         const params = new URLSearchParams(window.location.search);
-        let email = params.get('email');
-        email.toUpperCase();
-        let identifier = email.substring(0,2);
-        const imageUrl = "https://ui-avatars.com/api/?rounded=true" + "&name=" + identifier;
+        let imageUrl = "";
+        if (params) {
+            let email = params.get('email');
+            if (email) {
+                email.toUpperCase();
+                let identifier = email.substring(0,2);
+                imageUrl = "https://ui-avatars.com/api/?rounded=true" + "&name=" + identifier;
+                localStorage.setItem("imageUrl", imageUrl);
+            } else {
+                imageUrl = localStorage.getItem("imageUrl");
+            }
+        } else {
+            if (localStorage.getItem("imageUrl")) {
+                imageUrl = localStorage.getItem("imageUrl");
+            }
+        }
         navBarEndDisplayHtml.push(
             <div className="navbar-end">
                 <div className="navbar-item">
-                    <img alt={email} src={imageUrl}/>
+                    <img alt="User Avatar" src={imageUrl}/>
                 </div>
                 <div className="buttons">
                     <a
@@ -155,7 +168,6 @@ function NavBarComponent() {
                             <a
                                 id="notifications"
                                 className="navbar-item"
-                                href="/#"
                                 onClick={() =>
                                     setNotificationModalState(!notificationModalState)
                                 }
