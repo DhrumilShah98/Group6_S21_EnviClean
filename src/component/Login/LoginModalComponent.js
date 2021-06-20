@@ -58,6 +58,7 @@ function LoginModalComponent(props) {
     function submitForm(event) {
         let validForm = validEmail && validPassword;
         if (validForm) {
+            localStorage.setItem('isLoggedIn', true);
             return props.closeModal;
         }
         event.preventDefault();
