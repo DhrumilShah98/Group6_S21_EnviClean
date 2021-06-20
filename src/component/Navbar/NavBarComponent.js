@@ -64,10 +64,15 @@ function NavBarComponent() {
 
     const navBarEndDisplayHtml = [];
     if (isLoggedIn) {
+        const params = new URLSearchParams(window.location.search);
+        let email = params.get('email');
+        email.toUpperCase();
+        let identifier = email.substring(0,2);
+        const imageUrl = "https://ui-avatars.com/api/?rounded=true" + "&name=" + identifier;
         navBarEndDisplayHtml.push(
             <div className="navbar-end">
                 <div className="navbar-item">
-                    <img alt="Group 6" src={profileIcon}/>
+                    <img alt={email} src={imageUrl}/>
                 </div>
                 <div className="buttons">
                     <a
