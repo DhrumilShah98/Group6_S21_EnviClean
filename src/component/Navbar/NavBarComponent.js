@@ -42,23 +42,6 @@ function NavBarComponent() {
                 ],
             },
             {
-                id: "deposit",
-                title: "Deposit",
-                url: "/depositor",
-                item_data: [
-                    {
-                        id: "scheduleDeposit",
-                        name: "Book new",
-                        url: "/depositor",
-                    },
-                    {
-                        id: "myDeposits",
-                        name: "My Deposits",
-                        url: "/depositor",
-                    },
-                ],
-            },
-            {
                 id: "Collect",
                 title: "Collect",
                 url: "/collector",
@@ -69,19 +52,7 @@ function NavBarComponent() {
                         url: "/collector",
                     },
                 ],
-            },
-            {
-                id: "Patron",
-                title: "Patron",
-                url: "/patron",
-                item_data: [
-                    {
-                        id: "patronHome",
-                        name: "Patron Home",
-                        url: "/patron",
-                    },
-                ],
-            },
+            }
         ],
     };
 
@@ -165,6 +136,12 @@ function NavBarComponent() {
             <div id="enviNavBar" className="navbar-menu px-6">
                 <div className="navbar-end">
                     <NavBarDropDownItemComponent menu_data={menu_data}/>
+                    <a className="navbar-item" href="/depositor">
+                        Depositor
+                    </a>
+                    <a className="navbar-item" href="/patron">
+                        Patron
+                    </a>
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a id="settings" className="navbar-link" href="/">
                             Settings

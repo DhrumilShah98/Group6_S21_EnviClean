@@ -52,10 +52,10 @@ function HeroComponent() {
                             </div>
                         </div>
                         <div className="block has-text-centered py-3">
-                            <button id="depositnow" className="button is-primary is-large"
-                                    aria-label="Deposit now">
+                            <a id="depositnow" className="button is-primary is-large"
+                               aria-label="Deposit now" href="/depositor">
                                 Deposit now
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div className="column right-image is-hidden-touch">
