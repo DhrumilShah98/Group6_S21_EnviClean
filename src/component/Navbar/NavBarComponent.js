@@ -1,5 +1,4 @@
 import logo from "../../assets/logo_enviclean.svg";
-import profileIcon from "../../assets/profile_icon.svg";
 import NavBarDropDownItemComponent from "../Navbar/NavBarDropDownItemComponent";
 import React, {useState} from "react";
 import NotificationModalComponent from "../Home/NotificationModalComponent";

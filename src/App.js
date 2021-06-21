@@ -5,8 +5,6 @@ import PatronMember from "./component/Patron/PatronMember/PatronMember";
 import PatronHome from "./component/Patron/PatronHome/PatronHome";
 import DepositorLandingPage from "./component/Home/DepositorLandingPage";
 import Depositor from "./component/DepositorManagement/DepositorHome/DepositorHome";
-import LoginPage from "./component/Login/Login";
-import SignupPage from "./component/SignUp/SignUp";
 import Collector from "./component/CollectionManagement/CollectorHome";
 
 function App() {
@@ -20,8 +18,6 @@ function App() {
           <Route exact path="/patron" component={PatronMember} />
           <Route exact path="/patron/posts" component={PatronHome} />
           <Route exact path="/depositor" component={Depositor} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/collector" component={Collector} />
         </Switch>
       </BrowserRouter>

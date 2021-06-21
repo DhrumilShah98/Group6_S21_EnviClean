@@ -84,7 +84,7 @@ function LoginModalComponent(props) {
                                     <div className="control">
                                         <input className="input is-primary" id="emailId" size="10" type="email"
                                                name = "email"
-                                               placeholder="Email address. eg) naruto@manga.com"
+                                               placeholder="naruto@manga.com"
                                                onChange={validateSignupForm}
                                                required
                                         />
