@@ -22,14 +22,18 @@ function NavBarComponent() {
         const menu = document.querySelector(".navbar-menu");
         document.querySelector(".navbar-burger").classList.toggle("is-active");
         document.querySelector(".navbar-menu").classList.toggle("is-active");
-        const links = menu.querySelectorAll(".navbar-item");
+        const links = menu.querySelectorAll("#mission , #aboutUs, #why");
+        console.log(links)
         links.forEach(link => {
             link.addEventListener("click", function () {
-                burger.classList.remove("is-active");
-                menu.classList.remove("is-active");
+                if (link.id !== "notifications" && link.id !== "signup" && link.id !== "login") {
+                    burger.classList.remove("is-active");
+                    menu.classList.remove("is-active");
+                }
             });
         });
     }
+
     let menu_data = {
         menu_items: [
             {
@@ -47,18 +51,6 @@ function NavBarComponent() {
                         name: "Why EnviClean?",
                         url: "/#why",
                     }
-                ],
-            },
-            {
-                id: "Collect",
-                title: "Collect",
-                url: "/collector",
-                item_data: [
-                    {
-                        id: "Collect",
-                        name: "Collect",
-                        url: "/collector",
-                    },
                 ],
             }
         ],
@@ -79,7 +71,7 @@ function NavBarComponent() {
             let email = params.get('email');
             if (email) {
                 email.toUpperCase();
-                let identifier = email.substring(0,2);
+                let identifier = email.substring(0, 2);
                 imageUrl = "https://ui-avatars.com/api/?rounded=true" + "&name=" + identifier;
                 localStorage.setItem("imageUrl", imageUrl);
             } else {
@@ -91,12 +83,13 @@ function NavBarComponent() {
             }
         }
         navBarEndDisplayHtml.push(
-            <div className="navbar-end">
+            <div>
                 <div className="navbar-item">
                     <img alt="User Avatar" src={imageUrl}/>
                 </div>
                 <div className="buttons">
                     <a
+                        key="signout"
                         className="button is-light is-small"
                         onClick={signOut}
                         href="/"
@@ -108,32 +101,32 @@ function NavBarComponent() {
         );
     } else {
         navBarEndDisplayHtml.push(
-            <div className="navbar-end">
-                <div className="navbar-item">
-                    <div className="buttons">
-                        <a
-                            className="button is-light is-small"
-                            onClick={() => setSignUpModalState(!signUpModalState)}
-                        >
-                            Sign up
-                        </a>
-                        <SignupModalComponent
-                            closeModal={() => setSignUpModalState(!signUpModalState)}
-                            modalState={signUpModalState}
-                        />
-                        <a
-                            className="button is-light is-small"
-                            onClick={() => setLogInModalState(!logInModalState)}
-                        >
-                            <p>Log in</p>
-                        </a>
-                        <LoginModalComponent
-                            closeModal={() => setLogInModalState(!logInModalState)}
-                            modalState={logInModalState}
-                        />
-                    </div>
+                <div className="buttons">
+                    <a
+                        key={"signup"}
+                        id="signup"
+                        className="button is-light is-small"
+                        onClick={() => setSignUpModalState(!signUpModalState)}
+                    >
+                        Sign up
+                    </a>
+                    <SignupModalComponent
+                        closeModal={() => setSignUpModalState(!signUpModalState)}
+                        modalState={signUpModalState}
+                    />
+                    <a
+                        key={"signin"}
+                        id="login"
+                        className="button is-light is-small"
+                        onClick={() => setLogInModalState(!logInModalState)}
+                    >
+                        <p>Log in</p>
+                    </a>
+                    <LoginModalComponent
+                        closeModal={() => setLogInModalState(!logInModalState)}
+                        modalState={logInModalState}
+                    />
                 </div>
-            </div>
         );
     }
 
@@ -161,23 +154,27 @@ function NavBarComponent() {
             <div id="enviNavBar" className="navbar-menu px-6">
                 <div className="navbar-end">
                     <NavBarDropDownItemComponent menu_data={menu_data}/>
-                    <a className="navbar-item" href="/depositor">
-                        Depositor
+                    <a key="depositor" id={"depositor"} className="navbar-item" href="/depositor">
+                        Deposit
                     </a>
-                    <a className="navbar-item" href="/patron">
+                    <a key="collector" id={"collector"} className="navbar-item" href="/collector">
+                        Collect
+                    </a>
+                    <a key="patron" id={"patron"} className="navbar-item" href="/patron">
                         Patron
                     </a>
                     <div className="navbar-item has-dropdown is-hoverable">
-                        <a id="settings" className="navbar-link" href="/">
+                        <a key="settings" id="settings" className="navbar-link" href="/">
                             Settings
                         </a>
                         <div className="navbar-dropdown">
                             <a
+                                key={"notifications"}
                                 id="notifications"
                                 className="navbar-item"
                                 onClick={() =>
-                                    setNotificationModalState(!notificationModalState)
-                                }
+                                     setNotificationModalState(!notificationModalState)
+                                 }
                             >
                                 Notifications
                             </a>
@@ -187,7 +184,7 @@ function NavBarComponent() {
                                 }
                                 modalState={notificationModalState}
                             />
-                            <a id="profile" className="navbar-item" href="/">
+                            <a key="profile" id="profile" className="navbar-item" href="/">
                                 Profile
                             </a>
                         </div>
