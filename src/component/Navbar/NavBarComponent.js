@@ -23,7 +23,6 @@ function NavBarComponent() {
         document.querySelector(".navbar-burger").classList.toggle("is-active");
         document.querySelector(".navbar-menu").classList.toggle("is-active");
         const links = menu.querySelectorAll("#mission , #aboutUs, #why");
-        console.log(links)
         links.forEach(link => {
             link.addEventListener("click", function () {
                 if (link.id !== "notifications" && link.id !== "signup" && link.id !== "login") {
