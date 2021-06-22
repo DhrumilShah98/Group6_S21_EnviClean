@@ -18,10 +18,18 @@ function NavBarComponent() {
     }
 
     function toggleBurgerMenu() {
+        const burger = document.querySelector(".navbar-burger");
+        const menu = document.querySelector(".navbar-menu");
         document.querySelector(".navbar-burger").classList.toggle("is-active");
         document.querySelector(".navbar-menu").classList.toggle("is-active");
+        const links = menu.querySelectorAll(".navbar-item");
+        links.forEach(link => {
+            link.addEventListener("click", function () {
+                burger.classList.remove("is-active");
+                menu.classList.remove("is-active");
+            });
+        });
     }
-
     let menu_data = {
         menu_items: [
             {

@@ -13,7 +13,7 @@ function HeroComponent() {
                             <h1 className="subtitle is-size-5 has-text-weight-semibold">
                                 Get rewarded for your daily trash pickup on
                             </h1>
-                            <h1 className="title is-size-1 has-text-weight-bold is-primary">
+                            <h1 className="title is-size-1 is-size-2-touch has-text-weight-bold is-primary">
                                 EnviClean
                             </h1>
                         </div>
