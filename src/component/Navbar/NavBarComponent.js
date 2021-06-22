@@ -18,6 +18,7 @@ function NavBarComponent() {
     }
 
     function toggleBurgerMenu() {
+        document.querySelector(".navbar-burger").classList.toggle("is-active");
         document.querySelector(".navbar-menu").classList.toggle("is-active");
     }
 
@@ -136,13 +137,12 @@ function NavBarComponent() {
         >
             <div className="navbar-brand">
                 <a className="navbar-item" href="/">
-                    <img src={logo} width="370" height="71" alt="Welcome to EnviClean"/>
+                    <img src={logo} alt="Welcome to EnviClean"/>
                 </a>
                 <button
                     className="navbar-burger has-background-primary"
                     aria-label="menu"
                     aria-expanded="false"
-                    data-target="navbarBasicExample"
                     onClick={toggleBurgerMenu}
                 >
                     <span aria-hidden="true"> </span>
