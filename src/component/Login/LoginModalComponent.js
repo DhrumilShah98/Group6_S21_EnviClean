@@ -3,7 +3,7 @@ import React, {useState} from "react";
 function LoginModalComponent(props) {
 
     const [validForm, setValidForm] = useState(false);
-    const [validEmail, setValidEmail̥l] = useState(false);
+    const [validEmail, setValidEmail] = useState(false);
     const [email, setEmail] = useState("");
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
     const [validPassword, setValidPassword] = useState(false);
