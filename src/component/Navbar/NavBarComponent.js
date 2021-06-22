@@ -82,7 +82,7 @@ function NavBarComponent() {
             }
         }
         navBarEndDisplayHtml.push(
-            <div>
+            <div className="navbar-end">
                 <div className="navbar-item">
                     <img alt="User Avatar" src={imageUrl}/>
                 </div>
