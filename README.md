@@ -1,13 +1,14 @@
-# CSCI5709 Assignment 1 - Advanced Topics in Web Development
+# CSCI5709 Project - Advanced Topics in Web Development
 
 ## EnviClean
 Keeping the environment clean is our motive. Hence the project name EnviClean. It is a garbage collection management system developed by Advanced Web Services - Group 6.
 
 * *Date Created*: 16 06 2021
-* *Last Modification Date*: 16 06 2021
+* *Last Modification Date*: 22 06 2021
 
 ### Links
 * *GIT Repository* - <https://github.com/DhrumilShah98/Group6_S21_EnviClean>
+* *Deployment Link* - <https://enviclean.herokuapp.com/>
 
 ### Authors
 * [Dhrumil Amish Shah](dh416386@dal.ca) - *(Creator)*
@@ -71,3 +72,9 @@ All deployment options can be found at [https://facebook.github.io/create-react-
 * [@NeharikaSehgal](https://github.com/NeharikaSehgal)
 * [@shahaadesh5](https://github.com/shahaadesh5)
 * [@smnsingh444](https://github.com/smnsingh444)
+
+### Notes
+* We are working on imporoving the responsiveness in few areas of the website due to lack of time. By next group deliverable we will have all  the components responsiveness smooth.
+
+### References
+* We have referred [bulma](https://bulma.io/documentation/), [material UI](https://material-ui.com/getting-started/installation/), [sass](https://bulma.io/documentation/customize/with-node-sass/) for styling the website.
