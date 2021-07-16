@@ -1,43 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Constants } from "../../config/constants";
 
-function SignupModalComponent(props) {
+function ProfileModalComponent(props) {
+  let user = JSON.parse(localStorage.getItem("user"));
+  useEffect(() => {
+    user = JSON.parse(localStorage.getItem("user"));
+    if (user != undefined) {
+      setEmail(user.email);
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setAddress(user.address);
+      setCountry(user.country);
+      setProvince(user.province);
+      setCity(user.city);
+      setPincode(user.pincode);
+      setGender(user.gender);
+      setType(user.type);
+    }
+  }, []);
   const [validForm, setValidForm] = useState(false);
-  const [validEmail, setValidEmail] = useState(false);
-  const [email, setEmail] = useState("");
-  const [emailErrorMessage, setEmailErrorMessage] = useState("");
-  const [validFirstName, setValidFirstName] = useState(false);
+  const [email, setEmail] = useState(user == undefined ? "" : user.email);
+  const [validFirstName, setValidFirstName] = useState(true);
   const [firstName, setFirstName] = useState("");
   const [firstNameErrorMessage, setFirstNameErrorMessage] = useState("");
-  const [validLastName, setValidLastName] = useState(false);
+  const [validLastName, setValidLastName] = useState(true);
   const [lastName, setLastName] = useState("");
   const [lastNameErrorMessage, setLastNameErrorMessage] = useState("");
-  const [validAddress, setValidAddress] = useState(false);
+  const [validAddress, setValidAddress] = useState(true);
   const [address, setAddress] = useState("");
   const [addressErrorMessage, setAddressErrorMessage] = useState("");
-  const [validCountry, setValidCountry] = useState(false);
+  const [validCountry, setValidCountry] = useState(true);
   const [country, setCountry] = useState("");
   const [countryErrorMessage, setCountryErrorMessage] = useState("");
-  const [validProvince, setValidProvince] = useState(false);
+  const [validProvince, setValidProvince] = useState(true);
   const [province, setProvince] = useState("");
   const [provinceErrorMessage, setProvinceErrorMessage] = useState("");
-  const [validCity, setValidCity] = useState(false);
+  const [validCity, setValidCity] = useState(true);
   const [city, setCity] = useState("");
   const [cityErrorMessage, setCityErrorMessage] = useState("");
-  const [validPincode, setValidPincode] = useState(false);
+  const [validPincode, setValidPincode] = useState(true);
   const [pincode, setPincode] = useState("");
   const [pincodeErrorMessage, setPincodeErrorMessage] = useState("");
-  const [validGender, setValidGender] = useState(false);
+  const [validGender, setValidGender] = useState(true);
   const [gender, setGender] = useState("");
   const [genderErrorMessage, setGenderErrorMessage] = useState("");
-  const [validType, setValidType] = useState(false);
+  const [validType, setValidType] = useState(true);
   const [type, setType] = useState("");
   const [typeErrorMessage, setTypeErrorMessage] = useState("");
-  const [validPassword, setValidPassword] = useState(false);
+  const [validPassword, setValidPassword] = useState(true);
   const [password, setPassword] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const [validCnfPassword, setValidCnfPassword] = useState(false);
+  const [validCnfPassword, setValidCnfPassword] = useState(true);
   const [cnfPassword, setCnfPassword] = useState("");
   const [cnfPasswordErrorMessage, setCnfPasswordErrorMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -45,7 +59,7 @@ function SignupModalComponent(props) {
     return null;
   }
 
-  function validateSignupForm(event) {
+  function validateUpdateForm(event) {
     event.preventDefault();
     setValidForm(true);
     let name = event.target.name;
@@ -57,19 +71,6 @@ function SignupModalComponent(props) {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
     const passwordRegex = /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,16}$/;
 
-    if (name === "email") {
-      if (value.length === 0) {
-        err = "Email id cannot be empty";
-        setValidEmail(false);
-      } else if (value.match(emailRegex) === null) {
-        err = "Invalid email id";
-        setValidEmail(false);
-      } else {
-        setValidEmail(true);
-      }
-      setEmail(value);
-      setEmailErrorMessage(err);
-    }
     if (name === "firstname") {
       if (value.length === 0 || value === undefined || value === null) {
         err = <span>*Firstname cannot be empty</span>;
@@ -214,41 +215,61 @@ function SignupModalComponent(props) {
   }
 
   function submitForm(event) {
-    let validForm =
-      validEmail &&
-      validFirstName &&
-      validLastName &&
-      validAddress &&
-      validCountry &&
-      validProvince &&
-      validCity &&
-      validPincode &&
-      validGender &&
-      validPassword &&
-      validCnfPassword;
+    let validForm = false;
+    let updateBody;
+    if (password.length != 0) {
+      validForm =
+        validFirstName &&
+        validLastName &&
+        validAddress &&
+        validCountry &&
+        validProvince &&
+        validCity &&
+        validPincode &&
+        validGender &&
+        validType &&
+        validPassword &&
+        validCnfPassword;
+      updateBody = {
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        country: country,
+        province: province,
+        city: city,
+        pincode: pincode,
+        gender: gender,
+        type: type,
+        password: password,
+        confirmPassword: cnfPassword,
+      };
+    } else {
+      validForm =
+        validFirstName &&
+        validLastName &&
+        validAddress &&
+        validCountry &&
+        validProvince &&
+        validCity &&
+        validPincode &&
+        validGender &&
+        validType;
+      updateBody = {
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        country: country,
+        province: province,
+        city: city,
+        pincode: pincode,
+        gender: gender,
+        type: type,
+      };
+    }
     if (validForm) {
       axios
-        .post(Constants.USER_SIGNUP, {
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-          address: address,
-          country: country,
-          province: province,
-          city: city,
-          pincode: pincode,
-          gender: gender,
-          type: type,
-          password: password,
-          confirmPassword: cnfPassword,
-        })
+        .put(Constants.USER_UPDATE + user.id, updateBody)
         .then((response) => {
-          localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem("token", response["data"]["payload"]["token"]);
-          localStorage.setItem(
-            "user",
-            JSON.stringify(response["data"]["payload"]["user"])
-          );
           window.location.reload();
           return props.closeModal;
         })
@@ -266,13 +287,33 @@ function SignupModalComponent(props) {
     setValidForm(validForm);
   }
 
+  function deleteAccount() {
+    axios
+      .delete(Constants.USER_DELETE + user.id)
+      .then((response) => {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("imageUrl");
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.reload();
+        return props.closeModal;
+      })
+      .catch((error) => {
+        if (error.response != undefined) {
+          setErrorMessage(error.response.data.message);
+        } else {
+          setErrorMessage("Error in sending request. Please try again later.");
+        }
+      });
+  }
+
   return (
     <div className="modal is-active">
       <div className="modal-background" onClick={props.closeModal} />
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title is-size-5 has-text-centered">
-            Sign Up
+            User Profile
           </p>
           <button className="delete" onClick={props.closeModal} />
         </header>
@@ -286,16 +327,17 @@ function SignupModalComponent(props) {
                   </label>
                   <div className="control">
                     <input
+                      value={email}
                       className="input is-primary"
                       id="emailId"
                       size="10"
                       type="email"
                       name="email"
                       placeholder="Email address. eg) naruto@manga.com"
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
+                      readOnly
                       required
                     />
-                    <p className="help is-danger"> {emailErrorMessage} </p>
                   </div>
                 </div>
                 <div className="field">
@@ -304,13 +346,14 @@ function SignupModalComponent(props) {
                   </label>
                   <div className="control">
                     <input
+                      value={firstName}
                       className="input is-primary"
                       id="firstname"
                       size="10"
                       type="text"
                       name="firstname"
                       placeholder="Enter First Name"
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                       required
                     />
                     <p className="help is-danger"> {firstNameErrorMessage} </p>
@@ -322,13 +365,14 @@ function SignupModalComponent(props) {
                   </label>
                   <div className="control">
                     <input
+                      value={lastName}
                       className="input is-primary"
                       id="lastname"
                       size="10"
                       type="text"
                       name="lastname"
                       placeholder="Enter Last Name"
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                       required
                     />
                     <p className="help is-danger"> {lastNameErrorMessage} </p>
@@ -340,13 +384,14 @@ function SignupModalComponent(props) {
                   </label>
                   <div className="control">
                     <input
+                      value={address}
                       className="input is-primary"
                       id="address"
                       size="10"
                       type="text"
                       name="address"
                       placeholder="Enter Address"
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                       required
                     />
                     <p className="help is-danger"> {addressErrorMessage} </p>
@@ -360,7 +405,8 @@ function SignupModalComponent(props) {
                     <select
                       className="select input is-primary"
                       name="country"
-                      onChange={validateSignupForm}
+                      value={country}
+                      onChange={validateUpdateForm}
                     >
                       <option value="" defaultValue>
                         Select Country
@@ -379,7 +425,8 @@ function SignupModalComponent(props) {
                     <select
                       className="select input is-primary"
                       name="province"
-                      onChange={validateSignupForm}
+                      value={province}
+                      onChange={validateUpdateForm}
                     >
                       <option value="" defaultValue>
                         Select Province/State
@@ -398,13 +445,14 @@ function SignupModalComponent(props) {
                   </label>
                   <div className="control">
                     <input
+                      value={city}
                       className="input is-primary"
                       id="city"
                       size="10"
                       type="text"
                       name="city"
                       placeholder="Enter City"
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                       required
                     />
                     <p className="help is-danger"> {cityErrorMessage} </p>
@@ -416,13 +464,14 @@ function SignupModalComponent(props) {
                   </label>
                   <div className="control">
                     <input
+                      value={pincode}
                       className="input is-primary"
                       id="pincode"
                       size="10"
                       type="text"
                       name="pincode"
                       placeholder="Enter Pincode"
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                       required
                     />
                     <p className="help is-danger"> {pincodeErrorMessage} </p>
@@ -436,7 +485,8 @@ function SignupModalComponent(props) {
                     <select
                       className="select input is-primary"
                       name="gender"
-                      onChange={validateSignupForm}
+                      value={gender}
+                      onChange={validateUpdateForm}
                     >
                       <option value="" defaultValue>
                         Select Gender
@@ -451,13 +501,14 @@ function SignupModalComponent(props) {
                 </div>
                 <div className="field">
                   <label htmlFor="usertype" className="label">
-                    Sign Up As
+                    User Type
                   </label>
                   <div className="control">
                     <select
                       className="select input is-primary"
                       name="usertype"
-                      onChange={validateSignupForm}
+                      value={type}
+                      onChange={validateUpdateForm}
                     >
                       <option value="" defaultValue>
                         Select Type
@@ -478,9 +529,9 @@ function SignupModalComponent(props) {
                       id="password"
                       type="password"
                       name="password"
-                      placeholder="Enter your password"
+                      placeholder="Update password"
                       required
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                     />
                     <p className="help is-danger"> {passwordErrorMessage} </p>
                   </div>
@@ -495,9 +546,9 @@ function SignupModalComponent(props) {
                       id="cnfpassword"
                       type="password"
                       name="cnfpassword"
-                      placeholder="Enter your confirm password"
+                      placeholder="Confirm update password"
                       required
-                      onChange={validateSignupForm}
+                      onChange={validateUpdateForm}
                     />
                     <p className="help is-danger">{cnfPasswordErrorMessage}</p>
                   </div>
@@ -505,7 +556,14 @@ function SignupModalComponent(props) {
                 <div className="field">
                   <div className="control has-text-centered">
                     <button className="button is-primary" onClick={submitForm}>
-                      Sign Up
+                      Update Profile
+                    </button>
+                    <br />
+                    <button
+                      className="button is-primary margintop10"
+                      onClick={deleteAccount}
+                    >
+                      Delete Account
                     </button>
                     <p className="help is-danger">{errorMessage}</p>
                   </div>
@@ -519,4 +577,4 @@ function SignupModalComponent(props) {
   );
 }
 
-export default SignupModalComponent;
+export default ProfileModalComponent;
