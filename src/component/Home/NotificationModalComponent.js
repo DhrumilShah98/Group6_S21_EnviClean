@@ -72,6 +72,7 @@ function NotificationModalComponent(props) {
                         Hurray!! Preference saved!
                     </div>
                 );
+                setSavedMessage(savedMessageContent);
             } else {
                 savedMessageContent.push(
                     <div className="notification is-danger">
@@ -79,10 +80,10 @@ function NotificationModalComponent(props) {
                         </button>
                         Sorry! Notifications preference could not be saved this time! Try later :(
                     </div>
-                );
+                )
+                setSavedMessage(savedMessageContent);
             }
         });
-        setSavedMessage(savedMessageContent);
     }
 
     return (
