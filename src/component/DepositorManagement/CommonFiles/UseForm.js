@@ -1,5 +1,7 @@
 import { useState, useEffect} from "react";
 import Validation from "./Validation";
+import axios from "axios";
+import { Constants } from "../../../config/constants";
 
 function UseForm(edit) {
 
@@ -15,8 +17,9 @@ function UseForm(edit) {
     address: "",
     pincode: "",
     phonenumber: "",
+    instructions:"",
   });
-
+  const [errormessage, setErrorMessage] = useState();
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
   function handleChange(event) {
@@ -25,7 +28,8 @@ function UseForm(edit) {
         ...values,
         [event.target.name]: event.target.value,
       });
-      console.log(values)
+      console.log("values: ", values)
+      console.log("edit", edit)
   }
 
   function handleSubmit(event) {
@@ -33,6 +37,41 @@ function UseForm(edit) {
 
     setErrors(Validation(values));
     setIsValid(true);
+    if (Object.keys(errors).length === 0 && isValid)
+    {
+      let user = JSON.parse(localStorage.getItem("user"));
+        console.log(user);
+        const emailId = user.email;
+        console.log(emailId);
+      axios
+      .post(Constants.CREATE_DEPOSIT, {
+        userId: 1,
+        taskname: values.taskname,
+        drywaste: values.drywaste,
+        wetwaste: values.wetwaste,
+        medicalwaste: values.medicalwaste,
+        others: values.others,
+        weight: values.weight,
+        schedule: values.schedule,
+        datetime: values.datetime,
+        address: values.address,
+        pincode: values.pincode,
+        phonenumber: values.phonenumber,
+        instructions: values.instructions
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        if (error.response != undefined) {
+          setErrorMessage(error.response.data.message);
+        } else {
+          setErrorMessage(
+            "Error in sending request. Please try again later."
+          );
+        }
+      });
+    }
   }
 
   useEffect(() => {
@@ -49,25 +88,20 @@ function UseForm(edit) {
         address: "",
         pincode: "",
         phonenumber: "",
+        instructions:"",
       });
       }
      if (edit != null)
       {
-        // console.log(edit)
-        // let checkItems = ["drywaste", "wetwaste", "medicalwaste", "others"];
-        // if (checkItems.includes(edit.garbagetype)) {
-        // let newgarbage = { ...edit};
-        // console.log(newgarbage)
-        // newgarbage[garbagetype] =  true;
-        // edit.garbagetype = newgarbage;
-        // console.log(edit)
         setValues({
           ...edit
         });
-      
+      console.log("values 2", values)
+      console.log("Edit 2 ", edit)
+
     }
      //eslint-disable-next-line
   }, [errors]);
-  return { handleChange, handleSubmit, values, errors };
+  return { handleChange, handleSubmit, values, errors, errormessage };
 }
 export default UseForm;

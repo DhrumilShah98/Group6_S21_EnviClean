@@ -7,6 +7,9 @@ import ModifyDeposit from "../ModifyDeposit/ModifyDeposit";
 import DeleteDeposit from "../DeleteDeposit/DeleteDeposit";
 import { useState } from "react";
 import PopUp from "../CommonFiles/PopUp";
+import axios from "axios";
+import { Constants } from "../../../config/constants";
+
 function ViewDeposits() {
 
   const classes = useStyles();
@@ -14,6 +17,20 @@ function ViewDeposits() {
   const [id, setId]= useState("");
   const [openDelete, setopenDelete] =useState(false);
   const [edit, setEdit]= useState("null");
+
+  let user = localStorage.getItem("user");
+  let depositdata = []
+  if (user) {
+      user = JSON.parse(user);
+      let emailId = user.email;
+      if (emailId) {
+          axios.get(Constants.VIEW_DEPOSIT+ emailId).then(
+              (response) => {
+                  depositdata = response.data.payload;                  
+              });
+      }
+  }
+
   function handleModify(data)
   {
     console.log("entered" + data.id)
@@ -27,7 +44,7 @@ function ViewDeposits() {
     setopenDelete(true)
   }
   
-  if (!dummyViewData.length){
+  if (!depositdata.length){
     return (
       <div style={{ paddingTop: 50 }}>
       <Typography variant="h6" style={{ color: "#154001", fontWeight: 600 }}>My Deposits</Typography>
@@ -55,8 +72,24 @@ function ViewDeposits() {
         spacing={3}
         style={{ marginTop: 5, marginBottom: 10, alignItems:"center" }}
       >
-        {dummyViewData.map((data) => {
-          let garbagetype = Object.keys(data.drywaste).filter(x => data.drywaste[x]);
+        {depositdata.map((data) => {
+          let garbagetype = "";
+          if (data.drywaste)
+          {
+            garbagetype += " " + "drywaste";
+          }
+          if (data.wetwaste)
+          {
+            garbagetype += " " + "wetwaste";
+          }
+          if (data.medicalwaste)
+          {
+            garbagetype += " " + "medicalwaste";
+          }
+          if (data.others)
+          {
+            garbagetype += " " + "others";
+          }
             return (
               <Grid key={data._id} item xs={12} sm={6} md={5}>
                 <Card className={classes.card} elevation={6}>

@@ -4,7 +4,7 @@ import UseForm from "../CommonFiles/UseForm.js";
 import DepositForm from "../CommonFiles/DepositForm.js";
 
 function CreateDeposit() {
-  const { handleChange, handleSubmit, values, errors } = UseForm();
+  const { handleChange, handleSubmit, values, errors, errormessage } = UseForm();
   const classes = useStyles();
   return (
     <Paper className={classes.paper} elevation={6}>
@@ -23,9 +23,12 @@ function CreateDeposit() {
           size="large"
           type="submit"
           onClick={handleSubmit}
-          style={{ backgroundColor: "#154001" }}>
+          style={{ backgroundColor: "#154001" }}
+          error={errormessage ? true : false}
+          helperText={errormessage}>
           Deposit Now
         </Button>
+           
         </form>
     </Paper>
   );

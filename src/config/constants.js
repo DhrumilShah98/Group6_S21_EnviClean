@@ -12,4 +12,11 @@ export class Constants {
     static GET_NOTIFICATION_SETTINGS = "http://localhost:3001/settigs/notifications/";
     static MODIFY_NOTIFICATION_SETTINGS = "http://localhost:3001/settings/notifications/";
     // Notification settings APIS End
+
+    /* Depositor APIs Start*/
+    static CREATE_DEPOSIT = "http://localhost:3001/depositor/createdeposit";
+    static VIEW_DEPOSIT = "http://localhost:3001/depositor/getdeposits/";
+    static UPDATE_DEPOSIT = "http://localhost:3001/depositor/updatedeposit/";
+    static DELETE_DEPOSIT = "http://localhost:3001/depositor/deletedeposit/";
+    /* Depositor APIs END*/
 }

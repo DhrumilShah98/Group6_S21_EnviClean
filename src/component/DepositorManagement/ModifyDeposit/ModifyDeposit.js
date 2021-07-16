@@ -2,20 +2,60 @@ import useStyles from "./styles.js";
 import { Button} from "@material-ui/core";
 import UseForm from "../CommonFiles/UseForm.js";
 import DepositForm from "../CommonFiles/DepositForm.js";
+import Validation from "../CommonFiles/Validation";
+import { useState} from "react";
+import axios from "axios";
+import { Constants } from "../../../config/constants";
 
 function ModifyDeposit(props) {
     const {setopen, edit } = props;
   const { handleChange, values, errors } = UseForm(edit);
-  console.log(edit)
+  console.log("modify", edit)
   const classes = useStyles();
+  const [formerrors, setFormErrors] = useState({});
+  const [errormessage, setErrorMessage] = useState();
 
-  
-
-  function handleUpdate()
+  function handleUpdate(event)
   {
-
+    const id = edit.id
+    setFormErrors(Validation(values));
+    if (Object.keys(formerrors).length === 0)
+    {
+    axios
+        .put(Constants.UPDATE_DEPOSIT + id, {
+        taskname: values.taskname,
+        drywaste: values.drywaste,
+        wetwaste: values.wetwaste,
+        medicalwaste: values.medicalwaste,
+        others: values.others,
+        weight: values.weight,
+        schedule: values.schedule,
+        datetime: values.datetime,
+        address: values.address,
+        pincode: values.pincode,
+        phonenumber: values.phonenumber,
+        instructions: values.instructions})
+        .then((response) => {
+          window.location.reload();          
+        })
+        .catch((error) => {
+          if (error.response != undefined) {
+            setErrorMessage(error.response.data.message);
+          } else {
+            setErrorMessage(
+              "Error in updating the deposit request. Please try again later."
+            );
+          }
+        });
+      }
+    event.preventDefault();
   }
-  console.log(values)
+
+  function handleCancel(event)
+  {
+    event.preventDefault();
+    window.location.reload();
+  }
   return (
       <form
         className={`${classes.root} ${classes.form}`}
@@ -24,14 +64,16 @@ function ModifyDeposit(props) {
       <DepositForm 
       handleChange= {handleChange}
       values= {values}
-      errors={ errors}></DepositForm>
+      errors={ formerrors}></DepositForm>
       <Button
           className={classes.buttonSubmit}
           variant="contained"
           size="large"
           type="submit"
           onClick={handleUpdate}
-          style={{ backgroundColor: "#6495ED" }}>
+          style={{ backgroundColor: "#6495ED" }}
+          error={errormessage ? true : false}
+          helperText={errormessage}>
           Update Deposit
         </Button>
         <Button
@@ -39,7 +81,7 @@ function ModifyDeposit(props) {
           variant="contained"
           size="large"
           type="submit"
-          onClick={()=>setopen(false)}
+          onClick={handleCancel}
           style={{ backgroundColor: "#D3D3D3" }}>
           Cancel
         </Button>
