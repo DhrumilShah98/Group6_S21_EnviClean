@@ -560,7 +560,7 @@ function ProfileModalComponent(props) {
                     </button>
                     <br />
                     <button
-                      className="button is-primary margintop10"
+                      className="button is-primary margintop20"
                       onClick={deleteAccount}
                     >
                       Delete Account
