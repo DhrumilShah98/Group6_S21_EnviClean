@@ -68,6 +68,7 @@ function NavBarComponent() {
   }
 
   const navBarEndDisplayHtml = [];
+  const navBarLoggedInItems = [];
   if (isLoggedIn) {
     const user = JSON.parse(localStorage.getItem("user"));
     let identifier;
@@ -110,7 +111,43 @@ function NavBarComponent() {
         </div>
       </div>
     );
+    navBarLoggedInItems.push (
+        <div className="navbar-item has-dropdown is-hoverable">
+          <a id="settings" className="navbar-link" href="/">
+            Settings
+          </a>
+          <div className="navbar-dropdown">
+            <a
+                id="notifications"
+                className="navbar-item"
+                onClick={() =>
+                    setNotificationModalState(!notificationModalState)
+                }
+            >
+              Notifications
+            </a>
+            <NotificationModalComponent
+                closeModal={() =>
+                    setNotificationModalState(!notificationModalState)
+                }
+                modalState={notificationModalState}
+            />
+            <a
+                id="profile"
+                className="navbar-item"
+                onClick={() => setprofileModalState(!profileModalState)}
+            >
+              Profile
+            </a>
+            <ProfileModalComponent
+                closeModal={() => setprofileModalState(!profileModalState)}
+                modalState={profileModalState}
+            />
+          </div>
+        </div>
+    )
   } else {
+    navBarLoggedInItems.push();
     navBarEndDisplayHtml.push(
       <div className="navbar-end">
         <div className="navbar-item">
@@ -172,39 +209,7 @@ function NavBarComponent() {
           <a className="navbar-item" href="/patron">
             Patron
           </a>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <a id="settings" className="navbar-link" href="/">
-              Settings
-            </a>
-            <div className="navbar-dropdown">
-              <a
-                id="notifications"
-                className="navbar-item"
-                onClick={() =>
-                  setNotificationModalState(!notificationModalState)
-                }
-              >
-                Notifications
-              </a>
-              <NotificationModalComponent
-                closeModal={() =>
-                  setNotificationModalState(!notificationModalState)
-                }
-                modalState={notificationModalState}
-              />
-              <a
-                id="profile"
-                className="navbar-item"
-                onClick={() => setprofileModalState(!profileModalState)}
-              >
-                Profile
-              </a>
-              <ProfileModalComponent
-                closeModal={() => setprofileModalState(!profileModalState)}
-                modalState={profileModalState}
-              />
-            </div>
-          </div>
+          {navBarLoggedInItems}
           {navBarEndDisplayHtml}
         </div>
       </div>

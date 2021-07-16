@@ -5,29 +5,34 @@ import axios from "axios";
 function NotificationModalComponent(props) {
     const [savedMessage, setSavedMessage] = useState("");
     const [settingsStatus, setSettingsStatus] = useState(false);
-    let isChecked = "";
+    let isChecked = false;
     let user = localStorage.getItem("user");
-    let emailId = user.email;
-    let userType = user.type;
-    axios.get(Constants.GET_NOTIFICATION_SETTINGS + emailId).then(
-        (response) => {
-            let settings = response.data.payload;
-            if (userType === "Depositor") {
-                if (settings.isRemindBeforePickup) {
-                    setSettingsStatus(settings.isRemindBeforePickup);
-                    if (settingsStatus) {
-                        isChecked = "checked";
+    if (user) {
+        user = JSON.parse(user);
+        let emailId = user.email;
+        let userType = user.type;
+        if (emailId && userType) {
+            axios.get(Constants.GET_NOTIFICATION_SETTINGS + emailId).then(
+                (response) => {
+                    let settings = response.data.payload;
+                    if (userType === "Depositor") {
+                        if (settings.isRemindBeforePickup) {
+                            setSettingsStatus(settings.isRemindBeforePickup);
+                            if (settingsStatus) {
+                                isChecked = "checked";
+                            }
+                        }
+                    } else {
+                        if (settings.isRemindBeforeCollect) {
+                            setSettingsStatus(settings.isRemindBeforeCollect);
+                            if (settingsStatus) {
+                                isChecked = "checked";
+                            }
+                        }
                     }
-                }
-            } else {
-                if (settings.isRemindBeforeCollect) {
-                    setSettingsStatus(settings.isRemindBeforeCollect);
-                    if (settingsStatus) {
-                        isChecked = "checked";
-                    }
-                }
-            }
-        });
+                });
+        }
+    }
     if (!props.modalState) {
         return null;
     }
@@ -40,8 +45,10 @@ function NotificationModalComponent(props) {
     function handleSave(event) {
         event.preventDefault();
         let savedMessageContent = [];
-        let user = localStorage.getItem("user");
-        let emailId = user.email;
+        let user = JSON.parse(localStorage.getItem("user"));
+        console.log(user);
+        const emailId = user.email;
+        console.log(emailId);
         let userType = user.type;
         let requestBody = {};
         let url = Constants.MODIFY_NOTIFICATION_SETTINGS + emailId;
@@ -101,9 +108,8 @@ function NotificationModalComponent(props) {
                     <form>
                         <div className="field">
                             <label className="checkbox">
-                                <input id="notificationCheck" type="checkbox" {isChecked} />
-                                <span className="px-3 is-size-6">Notify me 1</span>
-                                <span className="px-3 is-size-6">hr before the activity time</span>
+                                <input id="notificationCheck" type="checkbox"/>
+                                <span className="px-3 is-size-6">Notify me 1 hr before the activity time</span>
                             </label>
                         </div>
                         <div className="field">
