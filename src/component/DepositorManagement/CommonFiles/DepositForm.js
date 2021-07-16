@@ -5,7 +5,13 @@ function DepositForm(props)
 {
     const { handleChange, values, errors } = props;
     const classes = useStyles();
+    const checkboxchange = (name, value)=>(
+    {
+        target:{
+        name, value
+      }
     
+    })
     return(
     
       <div>
@@ -33,9 +39,9 @@ function DepositForm(props)
             <FormControlLabel
               control={
                 <Checkbox
-                  onChange={handleChange}
+                  onChange={event => handleChange(checkboxchange(event.target.name,event.target.checked))}
                   name="drywaste"
-                  value={values.garbagetype.drywaste}
+                  checked={values.drywaste}
                   id="drywaste"
                   color="primary" />
               }
@@ -43,9 +49,9 @@ function DepositForm(props)
             <FormControlLabel
               control={
                 <Checkbox
-                  onChange={handleChange}
+                  onChange={event => handleChange(checkboxchange(event.target.name,event.target.checked))}
                   name="wetwaste"
-                  value={values.garbagetype.wetwaste}
+                  checked={values.wetwaste}
                   id="wetwaste"
                   color="primary" />
               }
@@ -53,9 +59,9 @@ function DepositForm(props)
             <FormControlLabel
               control={
                 <Checkbox
-                  onChange={handleChange}
+                  onChange={event => handleChange(checkboxchange(event.target.name,event.target.checked))}
                   name="medicalwaste"
-                  value={values.garbagetype.medicalwaste}
+                  checked={values.medicalwaste}
                   id="medicalwaste"
                   color="primary" />
               }
@@ -63,9 +69,9 @@ function DepositForm(props)
             <FormControlLabel
               control={
                 <Checkbox
-                  onChange={handleChange}
+                  onChange={event => handleChange(checkboxchange(event.target.name,event.target.checked))}
                   name="others"
-                  value={values.garbagetype.others}
+                  checked={values.others}
                   id="others"
                   color="primary" />
               }

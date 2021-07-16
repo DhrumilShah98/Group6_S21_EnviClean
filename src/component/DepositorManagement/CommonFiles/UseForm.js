@@ -5,12 +5,10 @@ function UseForm(edit) {
 
   const [values, setValues] = useState({
     taskname: "",
-    garbagetype: {
-      drywaste: "",
-      wetwaste: "",
-      medicalwaste: "",
-      others: "",
-    },
+    drywaste: false,
+    wetwaste: false,
+    medicalwaste: false,
+    others: false,
     weight: "",
     schedule: "Once",
     datetime: "",
@@ -22,19 +20,12 @@ function UseForm(edit) {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
   function handleChange(event) {
-    console.log(event.target.id + " " + event.target.value);
-    let checkItems = ["drywaste", "wetwaste", "medicalwaste", "others"];
-    if (checkItems.includes(event.target.id)) {
-      let newgarbage = { ...values.garbagetype };
-      newgarbage[event.target.name] = event.target.checked ? "checked" : "";
-      values.garbagetype = newgarbage;
-    } else {
+    console.log(event.target.name + " " + event.target.value);
       setValues({
         ...values,
         [event.target.name]: event.target.value,
       });
       console.log(values)
-    }
   }
 
   function handleSubmit(event) {
@@ -48,7 +39,10 @@ function UseForm(edit) {
       if (Object.keys(errors).length === 0 && isValid) {
        setValues({
         taskname: "",
-        garbagetype: "",
+        drywaste: false,
+        wetwaste: false,
+        medicalwaste: false,
+        others: false,
         weight: "",
         schedule: "Once",
         datetime: "",
@@ -59,9 +53,18 @@ function UseForm(edit) {
       }
      if (edit != null)
       {
+        // console.log(edit)
+        // let checkItems = ["drywaste", "wetwaste", "medicalwaste", "others"];
+        // if (checkItems.includes(edit.garbagetype)) {
+        // let newgarbage = { ...edit};
+        // console.log(newgarbage)
+        // newgarbage[garbagetype] =  true;
+        // edit.garbagetype = newgarbage;
+        // console.log(edit)
         setValues({
           ...edit
         });
+      
     }
      //eslint-disable-next-line
   }, [errors]);

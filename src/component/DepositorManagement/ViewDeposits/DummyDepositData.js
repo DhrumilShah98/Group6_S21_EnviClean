@@ -3,7 +3,8 @@ const dummyViewData =
 {
     _id:10,
     taskname: "type1",
-    garbagetype: " Dry, Wet",
+    drywaste: true,
+    garbagetype: "drywaste, wetwaste",
     weight: 10,
     schedule: "Once",
     datetime: "2021-06-20T11:00",
@@ -15,7 +16,8 @@ const dummyViewData =
 {
     _id:11,
     taskname: "type2",
-    garbagetype: " Dry",
+    drywaste: true,
+    garbagetype: "drywaste",
     weight: 10,
     schedule: "Weekly",
     datetime: "2021-06-21T11:00",
@@ -27,7 +29,8 @@ const dummyViewData =
 {
     _id:13,
     taskname: "type3",
-    garbagetype: " Medical",
+    drywaste: true,
+    garbagetype: "medicalwaste",
     weight: 10,
     schedule: "Daily",
     datetime: "2021-06-22T11:00",

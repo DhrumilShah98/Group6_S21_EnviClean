@@ -45,10 +45,10 @@ function Validation(values) {
   }
 
   if (
-    !values.garbagetype.wetwaste &&
-    !values.garbagetype.drywaste &&
-    !values.garbagetype.medicalwaste &&
-    !values.garbagetype.others
+    values.wetwaste === false &&
+    values.drywaste === false &&
+    values.medicalwaste === false &&
+    values.others === false 
   ) {
     errors.garbagetype = "Select atleast one garbage type";
   }

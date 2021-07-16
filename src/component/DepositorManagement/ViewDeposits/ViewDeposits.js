@@ -56,6 +56,7 @@ function ViewDeposits() {
         style={{ marginTop: 5, marginBottom: 10, alignItems:"center" }}
       >
         {dummyViewData.map((data) => {
+          let garbagetype = Object.keys(data.drywaste).filter(x => data.drywaste[x]);
             return (
               <Grid key={data._id} item xs={12} sm={6} md={5}>
                 <Card className={classes.card} elevation={6}>
@@ -73,7 +74,7 @@ function ViewDeposits() {
                       component="p"
                       noWrap
                       gutterBottom
-                    >{`Garbage Type : ${data.garbagetype}`}</Typography>
+                    >{`Garbage Type : ${garbagetype}`}</Typography>
                     <Typography
                       variant="body2"
                       color={"textSecondary"}
