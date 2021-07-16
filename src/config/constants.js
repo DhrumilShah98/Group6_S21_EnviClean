@@ -8,4 +8,8 @@ export class Constants {
     static USER_DELETE = "http://localhost:3001/user/delete/";
     /* User Managment APIS End */
 
+    // Notification settings API start
+    static GET_NOTIFICATION_SETTINGS = "http://localhost:3001/settigs/notifications/";
+    static MODIFY_NOTIFICATION_SETTINGS = "http://localhost:3001/settings/notifications/";
+    // Notification settings APIS End
 }

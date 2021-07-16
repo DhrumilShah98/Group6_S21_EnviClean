@@ -1,7 +1,33 @@
 import {useState} from "react";
+import {Constants} from "../../config/constants";
+import axios from "axios";
 
 function NotificationModalComponent(props) {
     const [savedMessage, setSavedMessage] = useState("");
+    const [settingsStatus, setSettingsStatus] = useState(false);
+    let isChecked = "";
+    let user = localStorage.getItem("user");
+    let emailId = user.email;
+    let userType = user.type;
+    axios.get(Constants.GET_NOTIFICATION_SETTINGS + emailId).then(
+        (response) => {
+            let settings = response.data.payload;
+            if (userType === "Depositor") {
+                if (settings.isRemindBeforePickup) {
+                    setSettingsStatus(settings.isRemindBeforePickup);
+                    if (settingsStatus) {
+                        isChecked = "checked";
+                    }
+                }
+            } else {
+                if (settings.isRemindBeforeCollect) {
+                    setSettingsStatus(settings.isRemindBeforeCollect);
+                    if (settingsStatus) {
+                        isChecked = "checked";
+                    }
+                }
+            }
+        });
     if (!props.modalState) {
         return null;
     }
@@ -14,18 +40,52 @@ function NotificationModalComponent(props) {
     function handleSave(event) {
         event.preventDefault();
         let savedMessageContent = [];
-        savedMessageContent.push(
-            <div className="notification is-primary">
-                <button className="delete" onClick={handleCloseNotification}>
-                </button>
-                Hurray!! Preference saved!
-            </div>
-        );
+        let user = localStorage.getItem("user");
+        let emailId = user.email;
+        let userType = user.type;
+        let requestBody = {};
+        let url = Constants.MODIFY_NOTIFICATION_SETTINGS + emailId;
+        let notificationCheckElement = document.getElementById("notificationCheck");
+        if (userType === "Depositor") {
+            if (notificationCheckElement && notificationCheckElement.checked) {
+                requestBody.isRemindBeforePickup = true;
+                requestBody.isRemindBeforeCollect = false;
+            } else {
+                requestBody.isRemindBeforePickup = false;
+                requestBody.isRemindBeforeCollect = false;
+            }
+        } else {
+            if (notificationCheckElement && notificationCheckElement.checked) {
+                requestBody.isRemindBeforePickup = false;
+                requestBody.isRemindBeforeCollect = true;
+            } else {
+                requestBody.isRemindBeforePickup = false;
+                requestBody.isRemindBeforeCollect = false;
+            }
+        }
+        axios.put(url, requestBody).then((response) => {
+            if (response.data.payload) {
+                savedMessageContent.push(
+                    <div className="notification is-primary">
+                        <button className="delete" onClick={handleCloseNotification}>
+                        </button>
+                        Hurray!! Preference saved!
+                    </div>
+                );
+            } else {
+                savedMessageContent.push(
+                    <div className="notification is-danger">
+                        <button className="delete" onClick={handleCloseNotification}>
+                        </button>
+                        Sorry! Notifications preference could not be saved this time! Try later :(
+                    </div>
+                );
+            }
+        });
         setSavedMessage(savedMessageContent);
     }
 
     return (
-
         <div className="modal is-active">
             <div className="modal-background" onClick={props.closeModal}/>
             <div className="modal-card">
@@ -40,16 +100,9 @@ function NotificationModalComponent(props) {
                     <form>
                         <div className="field">
                             <label className="checkbox">
-                                <input id="notificationCheck" type="checkbox"/>
-                                <span className="px-3 is-size-6">Notify me</span>
-                                <div className="select is-small is-primary">
-                                    <select id="notificationTime">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                                <span className="px-3 is-size-6">hr before the pickup time</span>
+                                <input id="notificationCheck" type="checkbox" {isChecked} />
+                                <span className="px-3 is-size-6">Notify me 1</span>
+                                <span className="px-3 is-size-6">hr before the activity time</span>
                             </label>
                         </div>
                         <div className="field">
