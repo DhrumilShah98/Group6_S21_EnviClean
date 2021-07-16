@@ -53,11 +53,11 @@ function ViewDeposits() {
         container
         alignItems="stretch"
         spacing={3}
-        style={{ marginTop: 5, marginBottom: 10 }}
+        style={{ marginTop: 5, marginBottom: 10, alignItems:"center" }}
       >
         {dummyViewData.map((data) => {
             return (
-              <Grid key={data._id} item xs={11} sm={6} md={5}>
+              <Grid key={data._id} item xs={12} sm={6} md={5}>
                 <Card className={classes.card} elevation={6}>
                   <CardContent>
                     <Typography

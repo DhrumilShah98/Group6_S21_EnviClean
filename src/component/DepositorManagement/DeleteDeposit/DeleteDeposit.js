@@ -22,7 +22,7 @@ const {open,setopen, id}= props
           <Button onClick={()=> setopen(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleConfirm} color="primary">
+          <Button onClick={handleConfirm}  style =  {{backgroundColor: "#ff0000", color :"#FFFFFF"}}>
             Confirm
           </Button>
         </DialogActions>
