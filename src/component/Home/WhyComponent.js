@@ -24,7 +24,7 @@ function WhyComponent() {
                         <p className="is-size-6 py-2">
                             Apart from picking up the regular household garbage, EnviClean provides you an opportunity
                             to let the Garbage pickers in your locality about the trash in the streets through the
-                            <b> Patron</b> program. <a href="/patron" class="is-link"> Know More</a>.
+                            <b> Patron</b> program. <a href="/patron" className="is-link"> Know More</a>.
                         </p>
                         <p className="is-size-6 py-2">
                             Motivating the systematic Trash deposition by rewarding the customers with EnviCoins,
