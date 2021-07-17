@@ -13,7 +13,7 @@ function Validation(values) {
   } else if (!regextaskname.test(values.taskname)) {
     errors.taskname = "Task Name must contain only alpabets and numbers";
   }
-  if (!values.weight.trim()) {
+  if (!values.weight) {
     errors.weight = "Approximate weight is required";
   } else if (!regexweight.test(values.weight)) {
     errors.weight = "Enter a vaild number in Approximate weight in kilograms";

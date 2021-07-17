@@ -9,6 +9,7 @@ import { Constants } from "../../../config/constants";
 function DeleteDeposit(props) {
   const { open, setopen, id } = props;
   const [errormessage, setErrorMessage] = useState();
+  
   function handleCancel(event) {
     event.preventDefault();
     window.location.reload();
@@ -21,7 +22,7 @@ function DeleteDeposit(props) {
         window.location.reload();
       })
       .catch((error) => {
-        if (error.response != undefined) {
+        if (error.response !== undefined) {
           setErrorMessage(error.response.data.message);
         } else {
           setErrorMessage(

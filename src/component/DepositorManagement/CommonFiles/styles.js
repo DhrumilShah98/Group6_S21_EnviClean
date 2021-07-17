@@ -25,8 +25,7 @@ export default makeStyles((theme) => ({
             },
     },
     formControl:{
-        
-
+        align: "left"
     },
     radio:{
         align:"left",

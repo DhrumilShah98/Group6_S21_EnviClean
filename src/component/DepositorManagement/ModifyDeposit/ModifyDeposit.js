@@ -8,9 +8,8 @@ import axios from "axios";
 import { Constants } from "../../../config/constants";
 
 function ModifyDeposit(props) {
-    const {setopen, edit } = props;
-  const { handleChange, values, errors } = UseForm(edit);
-  console.log("modify", edit)
+    const { edit } = props;
+  const { handleChange, values } = UseForm(edit);
   const classes = useStyles();
   const [formerrors, setFormErrors] = useState({});
   const [errormessage, setErrorMessage] = useState();
@@ -19,7 +18,7 @@ function ModifyDeposit(props) {
   {
     const id = edit.id
     setFormErrors(Validation(values));
-    if (Object.keys(formerrors).length === 0)
+    if (Object.keys(formerrors).length === 0) 
     {
     axios
         .put(Constants.UPDATE_DEPOSIT + id, {
@@ -36,10 +35,11 @@ function ModifyDeposit(props) {
         phonenumber: values.phonenumber,
         instructions: values.instructions})
         .then((response) => {
-          window.location.reload();          
+          window.location.reload();
+          console.log(values);           
         })
         .catch((error) => {
-          if (error.response != undefined) {
+          if (error.response !== undefined) {
             setErrorMessage(error.response.data.message);
           } else {
             setErrorMessage(
