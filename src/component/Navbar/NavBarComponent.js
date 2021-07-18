@@ -7,6 +7,7 @@ import LoginModalComponent from "../Login/LoginModalComponent";
 import SignupModalComponent from "../SignUp/SignupModalComponent";
 import ProfileModalComponent from "../Profile/ProfileModalComponent";
 import { useHistory } from "react-router-dom";
+import { isCollectorLoggedIn, isCollectorPatronMember } from '../../utils/NavbarPatronUtils.js';
 
 function NavBarComponent() {
   const [notificationModalState, setNotificationModalState] = useState(false);
@@ -111,40 +112,40 @@ function NavBarComponent() {
         </div>
       </div>
     );
-    navBarLoggedInItems.push (
-        <div className="navbar-item has-dropdown is-hoverable">
-          <a id="settings" className="navbar-link" href="/">
-            Settings
+    navBarLoggedInItems.push(
+      <div className="navbar-item has-dropdown is-hoverable">
+        <a id="settings" className="navbar-link" href="/">
+          Settings
+        </a>
+        <div className="navbar-dropdown">
+          <a
+            id="notifications"
+            className="navbar-item"
+            onClick={() =>
+              setNotificationModalState(!notificationModalState)
+            }
+          >
+            Notifications
           </a>
-          <div className="navbar-dropdown">
-            <a
-                id="notifications"
-                className="navbar-item"
-                onClick={() =>
-                    setNotificationModalState(!notificationModalState)
-                }
-            >
-              Notifications
-            </a>
-            <NotificationModalComponent
-                closeModal={() =>
-                    setNotificationModalState(!notificationModalState)
-                }
-                modalState={notificationModalState}
-            />
-            <a
-                id="profile"
-                className="navbar-item"
-                onClick={() => setprofileModalState(!profileModalState)}
-            >
-              Profile
-            </a>
-            <ProfileModalComponent
-                closeModal={() => setprofileModalState(!profileModalState)}
-                modalState={profileModalState}
-            />
-          </div>
+          <NotificationModalComponent
+            closeModal={() =>
+              setNotificationModalState(!notificationModalState)
+            }
+            modalState={notificationModalState}
+          />
+          <a
+            id="profile"
+            className="navbar-item"
+            onClick={() => setprofileModalState(!profileModalState)}
+          >
+            Profile
+          </a>
+          <ProfileModalComponent
+            closeModal={() => setprofileModalState(!profileModalState)}
+            modalState={profileModalState}
+          />
         </div>
+      </div>
     )
   } else {
     navBarLoggedInItems.push();
@@ -206,9 +207,15 @@ function NavBarComponent() {
           <a className="navbar-item" href="/depositor">
             Depositor
           </a>
-          <a className="navbar-item" href="/patron">
-            Patron
-          </a>
+          {(isCollectorLoggedIn() ?
+            <span className="navbar-item" >{isCollectorPatronMember() ?
+              <a key="patron" id={"patron"} className="navbar-item" href="/patron/posts" >
+                Patron
+              </a> : <a key="patron" id={"patron"} className="navbar-item" href="/patron">
+                Patron
+              </a>}
+            </span> : <div></div>
+          )}
           {navBarLoggedInItems}
           {navBarEndDisplayHtml}
         </div>

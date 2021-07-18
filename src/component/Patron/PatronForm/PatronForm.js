@@ -1,15 +1,16 @@
+/* Dhrumil Amish Shah */
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
-import FileBase from 'react-file-base64';
+import { createPatronPost } from '../../../apis/patronPostAPIs.js';
 import useStyles from './styles.js';
 
 const Form = ({ patronPosts, setPatronPosts }) => {
     const classes = useStyles();
-    const [formData, setFormData] = useState({ streetAddress: '', city: '', province: '', zipCode: '', selectedFile: '' });
-    const [errors, setErrors] = useState({ streetAddressValid: false, cityValid: false, provinceValid: false, zipCodeValid: false, selectedFileValid: false });
+    const [formData, setFormData] = useState({ streetAddress: '', city: '', province: '', zipCode: '', garbageImage: '' });
+    const [errors, setErrors] = useState({ streetAddressValid: false, cityValid: false, provinceValid: false, zipCodeValid: false, garbageImageValid: false });
 
     const validateFormData = () => {
-        if (errors.streetAddressValid && errors.cityValid && errors.provinceValid && errors.zipCodeValid && errors.selectedFileValid) {
+        if (errors.streetAddressValid && errors.cityValid && errors.provinceValid && errors.zipCodeValid && errors.garbageImageValid) {
             return true;
         } else {
             return false;
@@ -17,8 +18,8 @@ const Form = ({ patronPosts, setPatronPosts }) => {
     };
 
     const clearFormData = () => {
-        setFormData({ streetAddress: '', city: '', province: '', zipCode: '', selectedFile: '' });
-        setErrors({ streetAddressValid: false, cityValid: false, provinceValid: false, zipCodeValid: false, selectedFileValid: false });
+        setFormData({ streetAddress: '', city: '', province: '', zipCode: '', garbageImage: '' });
+        setErrors({ streetAddressValid: false, cityValid: false, provinceValid: false, zipCodeValid: false, garbageImageValid: false });
     }
 
     const validate = (e) => {
@@ -63,13 +64,13 @@ const Form = ({ patronPosts, setPatronPosts }) => {
                     errors["zipCodeValid"] = true;
                 }
                 break;
-            case "selectedFile":
-                if (e.target.value === "" || e.target.value === null) {
-                    errors["selectedFile"] = "Image is required."
-                    errors["selectedFileValid"] = false;
+            case "garbageImage":
+                if (e.target.files === null || e.target.files[0] === null) {
+                    errors["garbageImage"] = "Image is required."
+                    errors["garbageImageValid"] = false;
                 } else {
-                    errors["selectedFile"] = "";
-                    errors["selectedFileValid"] = true;
+                    errors["garbageImage"] = "";
+                    errors["garbageImageValid"] = true;
                 }
                 break;
             default:
@@ -86,21 +87,50 @@ const Form = ({ patronPosts, setPatronPosts }) => {
         });
     };
 
+    const onImageChange = (e) => {
+        validate(e);
+        const imageFile = e.target.files[0];
+        setFormData({
+            ...formData,
+            [e.target.name]: imageFile
+        });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateFormData()) {
-            formData["_id"] = patronPosts.length + 1;
-            formData["createdAt"] = new Date().toISOString();
-            formData["myPost"] = true;
-            formData["display"] = true;
-            setPatronPosts(patronPosts => [...patronPosts, formData]);
-            clearFormData();
+            const userId = parseInt(JSON.parse(localStorage.getItem("user")).id);
+            const patronPostData = new FormData();
+            patronPostData.append("userId", userId);
+            patronPostData.append("garbageImage", formData.garbageImage);
+            patronPostData.append("streetAddress", formData.streetAddress);
+            patronPostData.append("city", formData.city);
+            patronPostData.append("province", formData.province);
+            patronPostData.append("zipCode", formData.zipCode);
+            createNewPatronPost(patronPostData);
+        }
+    };
+
+    async function createNewPatronPost(patronPostData) {
+        try {
+            await createPatronPost(patronPostData).then((res) => {
+                const responseExists = (res.data !== null || res.data !== undefined)
+                if (responseExists) {
+                    res.data.payload.patronPostInsert.display = true;
+                    setPatronPosts(patronPosts => [res.data.payload.patronPostInsert, ...patronPosts]);
+                    clearFormData();
+                }
+            }).catch((err) => {
+                setPatronPosts(patronPosts);
+            });
+        } catch (err) {
+            console.log(err);
         }
     };
 
     return (
         <Paper className={classes.paper} elevation={6}>
-            <form className={`${classes.root} ${classes.form}`} autoComplete="off" noValidate>
+            <form className={`${classes.root} ${classes.form}`} autoComplete="off" noValidate method="POST" enctype="multipart/form-data">
                 <Typography variant="h6">Post Garbage</Typography>
                 <TextField
                     fullWidth
@@ -155,19 +185,21 @@ const Form = ({ patronPosts, setPatronPosts }) => {
                     error={errors["zipCode"] ? true : false}
                     helperText={errors["zipCode"]} />
                 <div className={classes.fileInput}>
-                    <FileBase
+                    <input
+                        fullWidth
+                        id="garbageImage"
                         type="file"
-                        multiple={false}
-                        label="Garbage Image"
-                        onDone={({ base64 }) => {
-                            setFormData({ ...formData, selectedFile: base64 })
-                            setErrors({ ...errors, selectedFile: "", selectedFileValid: true })
-                        }} />
+                        name="garbageImage"
+                        accept="image/*"
+                        required
+                        onChange={onImageChange}
+                        error={errors["garbageImage"] ? true : false}
+                        helperText={errors["garbageImage"]} />
                 </div>
                 <Button
                     className={classes.buttonSubmit}
-                    disabled={!validateFormData()}
                     variant="contained"
+                    disabled={!validateFormData()}
                     size="large"
                     type="submit"
                     onClick={handleSubmit}
