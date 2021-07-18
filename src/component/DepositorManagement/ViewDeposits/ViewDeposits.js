@@ -73,6 +73,7 @@ function ViewDeposits() {
     setopenDelete(true)
   }
   
+
   if (depositdata.length === 0){
     return (
       <div style={{ paddingTop: 50 }}>
