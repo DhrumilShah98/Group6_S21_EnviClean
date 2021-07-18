@@ -121,6 +121,14 @@ function ViewDeposits() {
           {
             garbagetype += " " + "others";
           }
+          let status = "";
+          if (data.status === 0)
+          {
+            status = "Open"
+          }
+          else{
+            status = "Accepted to Pick"
+          }
             return (
               <Grid key={data.id} item xs={12} sm={6} md={5}>
                 <Card className={classes.card} elevation={6}>
@@ -151,6 +159,12 @@ function ViewDeposits() {
                       component="p"
                       gutterBottom
                     >{`Scheduled : ${data.schedule}`}</Typography>
+                    <Typography
+                      variant="body2"
+                      color={"textSecondary"}
+                      component="p"
+                      gutterBottom
+                    >{`Status : ${status}`}</Typography>
                   </CardContent>
                   <div className = {classes.button}>
                     <IconButton 

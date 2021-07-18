@@ -8,6 +8,7 @@ import SignupModalComponent from "../SignUp/SignupModalComponent";
 import ProfileModalComponent from "../Profile/ProfileModalComponent";
 import { useHistory } from "react-router-dom";
 import { isCollectorLoggedIn, isCollectorPatronMember } from '../../utils/NavbarPatronUtils.js';
+import { isDepositorLoggedIn } from "../../utils/NavbarDepositUtils";
 
 function NavBarComponent() {
   const [notificationModalState, setNotificationModalState] = useState(false);
@@ -204,9 +205,10 @@ function NavBarComponent() {
       <div id="enviNavBar" className="navbar-menu px-6">
         <div className="navbar-end">
           <NavBarDropDownItemComponent menu_data={menu_data} />
+          {(isDepositorLoggedIn()?
           <a className="navbar-item" href="/depositor">
             Depositor
-          </a>
+          </a>:<div></div>)}
           {(isCollectorLoggedIn() ?
             <span className="navbar-item" >{isCollectorPatronMember() ?
               <a key="patron" id={"patron"} className="navbar-item" href="/patron/posts" >
