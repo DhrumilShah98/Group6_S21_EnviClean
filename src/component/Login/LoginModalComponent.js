@@ -11,6 +11,7 @@ function LoginModalComponent(props) {
   const [password, setPassword] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [resetPasswordMessage, setResetPasswordMessage] = useState("");
   if (!props.modalState) {
     return null;
   }
@@ -88,6 +89,32 @@ function LoginModalComponent(props) {
     setValidForm(validForm);
   };
 
+  const resetPassword = async (event) => {
+    if (validEmail) {
+      axios
+        .post(Constants.USER_FORGOT_PASSWORD, {
+          email: email,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            setResetPasswordMessage("Reset password mail sent.");
+          } else {
+            setResetPasswordMessage("User not found");
+          }
+        })
+        .catch((error) => {
+          if (error.response != undefined) {
+            setErrorMessage(error.response.data.message);
+          } else {
+            setErrorMessage(
+              "Error in sending request. Please try again later."
+            );
+          }
+        });
+    }
+    event.preventDefault();
+  };
+
   return (
     <div className="modal is-active">
       <div className="modal-background" onClick={props.closeModal} />
@@ -143,6 +170,12 @@ function LoginModalComponent(props) {
                       Login
                     </button>
                     <p className="help is-danger">{errorMessage}</p>
+                    <p className="help is-success">{resetPasswordMessage}</p>
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control has-text-centered">
+                    <a onClick={resetPassword}>Forgot Password</a>
                   </div>
                 </div>
               </form>
