@@ -1,3 +1,4 @@
+/* Dhrumil Amish Shah */
 import { makeStyles } from "@material-ui/core";
 import dustbinBackground from '../../../assets/dustbin_background.jpg';
 export default makeStyles(() => ({

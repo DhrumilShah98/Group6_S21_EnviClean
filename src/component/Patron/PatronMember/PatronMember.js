@@ -1,6 +1,8 @@
+/* Dhrumil Amish Shah */
 import React, { useState } from 'react';
 import { Card, CardContent, Paper, Typography, CssBaseline, Button, Avatar, CardActions } from '@material-ui/core';
 import PatronTermsAndConditions from './PatronTermsAndConditions';
+import { makePatronMember } from "../../../apis/patronPostAPIs.js";
 import patronMemberImg from '../../../assets/patron_member.png';
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
@@ -15,13 +17,30 @@ const PatronMember = () => {
 
     const closeDialog = () => { setOpen(false); }
 
+    async function makeUserPatronMember() {
+        const userId = parseInt(JSON.parse(localStorage.getItem("user")).id);
+        await makePatronMember(userId).then((res) => {
+            const responseExists = (res.data !== null || res.data !== undefined)
+            if (responseExists) {
+                const currentUser = JSON.parse(localStorage.getItem("user"));
+                currentUser.isPatron = 1;
+                localStorage.setItem("user", JSON.stringify(currentUser));
+                setAgree(true);
+                closeDialog();
+            } else {
+                closeDialog();
+            }
+        }).catch((err) => {
+            closeDialog();
+        });
+    };
+
     const agreeTerms = () => {
-        setAgree(true);
-        closeDialog();
+        makeUserPatronMember();
     }
 
     const viewPatronPosts = () => {
-        history.push('/Patron/posts');
+        history.push('/patron/posts');
     }
 
     return (
