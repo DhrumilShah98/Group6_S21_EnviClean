@@ -10,7 +10,7 @@ export class Constants {
     /* User Managment APIS End */
 
     // Notification settings API start
-    static GET_NOTIFICATION_SETTINGS = "https://envicleanapi.herokuapp.com/settigs/notifications/";
+    static GET_NOTIFICATION_SETTINGS = "https://envicleanapi.herokuapp.com/settings/notifications/";
     static MODIFY_NOTIFICATION_SETTINGS = "https://envicleanapi.herokuapp.com/settings/notifications/";
     // Notification settings APIS End
 
