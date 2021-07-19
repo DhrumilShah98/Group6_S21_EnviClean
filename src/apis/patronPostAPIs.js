@@ -1,7 +1,7 @@
 /* Dhrumil Amish Shah */
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://envicleanapi.herokuapp.com';
 
 export const makePatronMember = (userId) => {
     return axios({
