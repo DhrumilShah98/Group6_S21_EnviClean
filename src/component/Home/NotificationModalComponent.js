@@ -5,7 +5,7 @@ import axios from "axios";
 function NotificationModalComponent(props) {
     const [savedMessage, setSavedMessage] = useState("");
     const [settingsStatus, setSettingsStatus] = useState(false);
-    let isChecked = false;
+    const [ isChecked, setIschecked] = useState(false);
     let user = localStorage.getItem("user");
     if (user) {
         user = JSON.parse(user);
@@ -16,18 +16,18 @@ function NotificationModalComponent(props) {
                 (response) => {
                     let settings = response.data.payload;
                     if (userType === "Depositor") {
-                        if (settings.isRemindBeforePickup) {
-                            setSettingsStatus(settings.isRemindBeforePickup);
-                            if (settingsStatus) {
-                                isChecked = "checked";
-                            }
+                        if (settings.isRemindBeforePickup === 1) {
+                            setSettingsStatus(true);
+                        }
+                        else{
+                            setSettingsStatus(false);
                         }
                     } else {
-                        if (settings.isRemindBeforeCollect) {
-                            setSettingsStatus(settings.isRemindBeforeCollect);
-                            if (settingsStatus) {
-                                isChecked = "checked";
-                            }
+                        if (settings.isRemindBeforeCollect === 1) {
+                            setSettingsStatus(true);
+                        }
+                        else{
+                            setSettingsStatus(false);
                         }
                     }
                 });
@@ -41,6 +41,12 @@ function NotificationModalComponent(props) {
         event.preventDefault();
         setSavedMessage("");
     }
+
+    function handleCheck(event)
+    {
+        setIschecked(!isChecked);
+    }
+
 
     function handleSave(event) {
         event.preventDefault();
@@ -108,7 +114,7 @@ function NotificationModalComponent(props) {
                     <form>
                         <div className="field">
                             <label className="checkbox">
-                                <input id="notificationCheck" type="checkbox"/>
+                                <input id="notificationCheck" type="checkbox"  defaultChecked = {settingsStatus} onChange = {handleCheck}/>
                                 <span className="px-3 is-size-6">Notify me 1 hr before the activity time</span>
                             </label>
                         </div>

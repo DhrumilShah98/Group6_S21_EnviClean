@@ -30,11 +30,8 @@ function UseForm(edit) {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
     setErrors(Validation(values));
     setIsValid(true);
-    console.log(Object.keys(errors).length)
-    console.log(isValid)
     if (Object.keys(errors).length === 0 && isValid) {
       let user = localStorage.getItem("user");
       console.log(user);
@@ -105,6 +102,7 @@ function UseForm(edit) {
         return window.alert("Please Login to Create Deposit");
       }
     } 
+    event.preventDefault();
   }
 
   useEffect(() => {

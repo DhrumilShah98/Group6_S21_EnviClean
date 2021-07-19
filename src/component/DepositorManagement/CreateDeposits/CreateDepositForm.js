@@ -11,7 +11,6 @@ function CreateDeposit() {
     <Paper className={classes.paper} elevation={6}>
       <form
         className={`${classes.root} ${classes.form}`}
-        autoComplete="off"
         noValidate>
           <Typography variant="h6" style={{ color: "#154001", fontWeight: 600 }}>Deposit Garbage</Typography>
       <DepositForm 
@@ -22,8 +21,7 @@ function CreateDeposit() {
           className={classes.buttonSubmit}
           variant="contained"
           size="large"
-          type="submit"
-          onClick={handleSubmit}
+          onClick ={handleSubmit}
           style={{ backgroundColor: "#154001" }}
           error={errormessage ? true : false}
           helperText={errormessage}>
