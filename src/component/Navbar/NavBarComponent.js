@@ -7,7 +7,7 @@ import LoginModalComponent from "../Login/LoginModalComponent";
 import SignupModalComponent from "../SignUp/SignupModalComponent";
 import ProfileModalComponent from "../Profile/ProfileModalComponent";
 import { useHistory } from "react-router-dom";
-import { isCollectorLoggedIn, isCollectorPatronMember } from '../../utils/NavbarPatronUtils.js';
+import { isLoggedInUserDepositor, isDepositorPatronMember } from '../../utils/NavbarPatronUtils.js';
 import { isDepositorLoggedIn } from "../../utils/NavbarDepositUtils";
 
 function NavBarComponent() {
@@ -209,8 +209,8 @@ function NavBarComponent() {
           <a className="navbar-item" href="/depositor">
             Depositor
           </a>:<div></div>)}
-          {(isCollectorLoggedIn() ?
-            <span className="navbar-item" >{isCollectorPatronMember() ?
+          {(isLoggedInUserDepositor() ?
+            <span className="navbar-item" >{isDepositorPatronMember() ?
               <a key="patron" id={"patron"} className="navbar-item" href="/patron/posts" >
                 Patron
               </a> : <a key="patron" id={"patron"} className="navbar-item" href="/patron">
