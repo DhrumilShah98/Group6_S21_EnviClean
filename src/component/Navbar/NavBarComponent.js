@@ -1,5 +1,4 @@
 import logo from "../../assets/logo_enviclean.svg";
-import profileIcon from "../../assets/profile_icon.svg";
 import NavBarDropDownItemComponent from "../Navbar/NavBarDropDownItemComponent";
 import React, { useState } from "react";
 import NotificationModalComponent from "../Home/NotificationModalComponent";
@@ -9,6 +8,7 @@ import ProfileModalComponent from "../Profile/ProfileModalComponent";
 import { useHistory } from "react-router-dom";
 import { isLoggedInUserDepositor, isDepositorPatronMember } from '../../utils/NavbarPatronUtils.js';
 import { isDepositorLoggedIn } from "../../utils/NavbarDepositUtils";
+import { isCollectorLoggedIn } from "../../utils/NavbarCollectorUtils.js";
 
 function NavBarComponent() {
   const [notificationModalState, setNotificationModalState] = useState(false);
@@ -42,18 +42,6 @@ function NavBarComponent() {
             id: "why",
             name: "Why EnviClean?",
             url: "/#why",
-          },
-        ],
-      },
-      {
-        id: "Collect",
-        title: "Collect",
-        url: "/collector",
-        item_data: [
-          {
-            id: "Collect",
-            name: "Collect",
-            url: "/collector",
           },
         ],
       },
@@ -208,6 +196,10 @@ function NavBarComponent() {
           {(isDepositorLoggedIn()?
           <a className="navbar-item" href="/depositor">
             Depositor
+          </a>:<div></div>)}
+          {(isCollectorLoggedIn()?
+          <a className="navbar-item" href="/collector">
+            Collector
           </a>:<div></div>)}
           {(isLoggedInUserDepositor() ?
             <span className="navbar-item" >{isDepositorPatronMember() ?
