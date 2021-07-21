@@ -1,8 +1,8 @@
 /* Author: Parth Thummar */
 import React, { useState, useEffect } from "react";
 import {
-  getCollectionRequestByPincode,
-  pickDeposit,
+  getPickedCollectionRequest,
+  discardPickedDeposit,
 } from "../../../apis/collectorAPIs.js";
 import {
   Card,
@@ -15,17 +15,17 @@ import {
 } from "@material-ui/core";
 import useStyles from "./styles.js";
 
-function ViewCollection({}) {
+function ViewPersonalCollection() {
   const classes = useStyles();
-
   const [collectionRequest, setCollectionRequest] = useState([]);
 
   useEffect(() => {
-    getAllCollectionRequest();
+    const loggedInUserId = JSON.parse(localStorage.getItem("user")).email;
+    getPersonalCollectionRequest(loggedInUserId);
   }, []);
 
-  async function getAllCollectionRequest() {
-    await getCollectionRequestByPincode()
+  async function getPersonalCollectionRequest(userId) {
+    await getPickedCollectionRequest(userId)
       .then((res) => {
         const responseExists = res.data !== null || res.data !== undefined;
         if (responseExists) {
@@ -40,12 +40,11 @@ function ViewCollection({}) {
       });
   }
 
-  function handlePick(id, userId) {
-    const loggedInUserId = JSON.parse(localStorage.getItem("user")).email;
-    pickDeposit(id, loggedInUserId).then((res) => {
+  function handleDiscard(id) {
+    discardPickedDeposit(id).then((res) => {
       collectionRequest.map((data) => {
         if (data.id == id) {
-          data.status = 1;
+          data.status = 0;
         }
       });
       setCollectionRequest([...collectionRequest]);
@@ -53,6 +52,7 @@ function ViewCollection({}) {
   }
 
   function onSearchClick(event) {
+    console.log(event.target.value);
     collectionRequest.forEach((data) => {
       if (data.pincode.includes(event.target.value)) {
         data.display = true;
@@ -113,7 +113,7 @@ function ViewCollection({}) {
             } else {
               status = "Accepted to Pick";
             }
-            if (status === "Open") {
+            if (status != "Open") {
               return (
                 <Grid key={data._id} item xs={11} sm={6} md={5}>
                   <Card className={classes.card} elevation={6}>
@@ -178,13 +178,13 @@ function ViewCollection({}) {
                     <div className={classes.button}>
                       <IconButton
                         variant="contained"
-                        onClick={() => handlePick(data.id, data.userId)}
+                        onClick={() => handleDiscard(data.id)}
                       >
                         <Button
                           variant="contained"
                           style={{ backgroundColor: "#60A62E", color: "white" }}
                         >
-                          Pick
+                          Discard
                         </Button>
                       </IconButton>
                     </div>
@@ -199,4 +199,4 @@ function ViewCollection({}) {
   );
 }
 
-export default ViewCollection;
+export default ViewPersonalCollection;

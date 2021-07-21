@@ -1,7 +1,10 @@
 /* Dhrumil Amish Shah */
 import React, { useState, useEffect } from "react";
 import { Button, Container, Grow, Grid, TextField } from "@material-ui/core";
-import { getPatronPosts, deletePatronPost } from "../../../apis/patronPostAPIs.js";
+import {
+  getPatronPosts,
+  deletePatronPost,
+} from "../../../apis/patronPostAPIs.js";
 import PatronForm from "../PatronForm/PatronForm";
 import PatronPosts from "../PatronPosts/PatronPosts";
 import useStyles from "./styles.js";
@@ -16,21 +19,25 @@ const PatronHome = () => {
   }, []);
 
   async function getAllPatronPosts() {
-    await getPatronPosts().then((res) => {
-      const responseExists = (res.data !== null || res.data !== undefined)
-      if (responseExists) {
-        res.data.payload.allPatronPosts.forEach((patronPost) => {
-          patronPost.display = true;
-        });
-      }
-      setPatronPosts(res.data.payload.allPatronPosts);
-    }).catch((err) => {
-      setPatronPosts([]);
-    });
-  };
+    await getPatronPosts()
+      .then((res) => {
+        const responseExists = res.data !== null || res.data !== undefined;
+        if (responseExists) {
+          res.data.payload.allPatronPosts.forEach((patronPost) => {
+            patronPost.display = true;
+          });
+        }
+        setPatronPosts(res.data.payload.allPatronPosts);
+      })
+      .catch((err) => {
+        setPatronPosts([]);
+      });
+  }
 
   const toggleViewMyPosts = () => {
-    const loggedInUserId = parseInt(JSON.parse(localStorage.getItem("user")).id);
+    const loggedInUserId = parseInt(
+      JSON.parse(localStorage.getItem("user")).id
+    );
     const viewMyPostsStatus = !viewMyPosts;
     if (viewMyPostsStatus) {
       patronPosts.forEach(function (post) {
@@ -51,19 +58,26 @@ const PatronHome = () => {
 
   async function deletePost(patronPostId) {
     const userId = parseInt(JSON.parse(localStorage.getItem("user")).id);
-    await deletePatronPost(userId, patronPostId).then((res) => {
-      const responseExists = (res.data !== null || res.data !== undefined)
-      if (responseExists) {
-        patronPosts.splice(patronPosts.findIndex((post) => post.patronPostId === patronPostId), 1);
-        setPatronPosts((patronPosts) => [...patronPosts]);
-      }
-    }).catch((err) => {
-      console.log(err);
-    });
-  };
+    await deletePatronPost(userId, patronPostId)
+      .then((res) => {
+        const responseExists = res.data !== null || res.data !== undefined;
+        if (responseExists) {
+          patronPosts.splice(
+            patronPosts.findIndex((post) => post.patronPostId === patronPostId),
+            1
+          );
+          setPatronPosts((patronPosts) => [...patronPosts]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   const filterPatronPosts = (e) => {
-    const loggedInUserId = parseInt(JSON.parse(localStorage.getItem("user")).id);
+    const loggedInUserId = parseInt(
+      JSON.parse(localStorage.getItem("user")).id
+    );
     if (e.target.value !== null || e.target.value !== "") {
       patronPosts.forEach(function (post) {
         const streetAddress = post.streetAddress.toLowerCase();
@@ -113,7 +127,7 @@ const PatronHome = () => {
     } else {
       if (viewMyPosts) {
         patronPosts.forEach(function (post) {
-          post.display = (loggedInUserId === post.userId) ? true : false;
+          post.display = loggedInUserId === post.userId ? true : false;
         });
       } else {
         patronPosts.forEach(function (post) {
