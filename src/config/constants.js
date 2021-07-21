@@ -23,4 +23,3 @@ export class Constants {
     static DELETE_DEPOSIT = `${BASE_URL}/depositor/deletedeposit/`;
     /* Depositor APIs END*/
 }
-//"https://envicleanapi.herokuapp.com/"
