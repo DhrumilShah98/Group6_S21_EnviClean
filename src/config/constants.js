@@ -1,3 +1,4 @@
+/* Author Vishal Dipak Parmar */
 const BASE_URL = 'https://envicleanapi.herokuapp.com';
 export class Constants {
 
