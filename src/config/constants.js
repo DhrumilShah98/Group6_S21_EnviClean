@@ -1,23 +1,26 @@
+const BASE_URL = 'https://envicleanapi.herokuapp.com';
 export class Constants {
 
     /* User Managment APIS Start */
-    static USER_LOGIN = "https://envicleanapi.herokuapp.com/app/login";
-    static USER_SIGNUP = "https://envicleanapi.herokuapp.com/app/signup";
-    static USER_FORGOT_PASSWORD = "https://envicleanapi.herokuapp.com/app/forgotpassword";
-    static USER_GET = "https://envicleanapi.herokuapp.com/user/get/";
-    static USER_UPDATE = "https://envicleanapi.herokuapp.com/user/update/";
-    static USER_DELETE = "https://envicleanapi.herokuapp.com/user/delete/";
+    
+    static USER_LOGIN = `${BASE_URL}/app/login`;
+    static USER_SIGNUP = `${BASE_URL}/app/signup`;
+    static USER_FORGOT_PASSWORD = `${BASE_URL}/app/forgotpassword`;
+    static USER_GET = `${BASE_URL}/user/get/`;
+    static USER_UPDATE = `${BASE_URL}/user/update/`;
+    static USER_DELETE = `${BASE_URL}/user/delete/`;
     /* User Managment APIS End */
 
     // Notification settings API start
-    static GET_NOTIFICATION_SETTINGS = "https://envicleanapi.herokuapp.com/settings/notifications/";
-    static MODIFY_NOTIFICATION_SETTINGS = "https://envicleanapi.herokuapp.com/settings/notifications/";
+    static GET_NOTIFICATION_SETTINGS = `${BASE_URL}/settings/notifications/`;
+    static MODIFY_NOTIFICATION_SETTINGS = `${BASE_URL}/settings/notifications/`;
     // Notification settings APIS End
 
     /* Depositor APIs Start*/
-    static CREATE_DEPOSIT = "https://envicleanapi.herokuapp.com/depositor/createdeposit";
-    static VIEW_DEPOSIT = "https://envicleanapi.herokuapp.com/depositor/getdeposits/";
-    static UPDATE_DEPOSIT = "https://envicleanapi.herokuapp.com/depositor/updatedeposit/";
-    static DELETE_DEPOSIT = "https://envicleanapi.herokuapp.com/depositor/deletedeposit/";
+    static CREATE_DEPOSIT = `${BASE_URL}/depositor/createdeposit`;
+    static VIEW_DEPOSIT = `${BASE_URL}/depositor/getdeposits/`;
+    static UPDATE_DEPOSIT = `${BASE_URL}/depositor/updatedeposit/`;
+    static DELETE_DEPOSIT = `${BASE_URL}/depositor/deletedeposit/`;
     /* Depositor APIs END*/
 }
+//"https://envicleanapi.herokuapp.com/"
