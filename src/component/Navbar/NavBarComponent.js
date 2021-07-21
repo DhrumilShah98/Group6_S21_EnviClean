@@ -176,7 +176,7 @@ function NavBarComponent() {
     >
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
-          <img src={logo} width="370" height="71" alt="Welcome to EnviClean" />
+          <img src={logo} width="300" height="71" alt="Welcome to EnviClean" />
         </a>
         <button
           className="navbar-burger"
@@ -201,14 +201,12 @@ function NavBarComponent() {
           <a className="navbar-item" href="/collector">
             Collector
           </a>:<div></div>)}
-          {(isLoggedInUserDepositor() ?
-            <span className="navbar-item" >{isDepositorPatronMember() ?
+          {(isLoggedInUserDepositor() && isDepositorPatronMember()?
               <a key="patron" id={"patron"} className="navbar-item" href="/patron/posts" >
                 Patron
               </a> : <a key="patron" id={"patron"} className="navbar-item" href="/patron">
                 Patron
-              </a>}
-            </span> : <div></div>
+              </a>
           )}
           {navBarLoggedInItems}
           {navBarEndDisplayHtml}

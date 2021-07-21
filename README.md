@@ -73,8 +73,5 @@ All deployment options can be found at [https://facebook.github.io/create-react-
 * [@shahaadesh5](https://github.com/shahaadesh5)
 * [@smnsingh444](https://github.com/smnsingh444)
 
-### Notes
-* We are working on imporoving the responsiveness in few areas of the website due to lack of time. By next group deliverable we will have all  the components responsiveness smooth.
-
 ### References
 * We have referred [bulma](https://bulma.io/documentation/), [material UI](https://material-ui.com/getting-started/installation/), [sass](https://bulma.io/documentation/customize/with-node-sass/) for styling the website.
