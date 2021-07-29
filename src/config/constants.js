@@ -23,4 +23,11 @@ export class Constants {
     static UPDATE_DEPOSIT = `${BASE_URL}/depositor/updatedeposit/`;
     static DELETE_DEPOSIT = `${BASE_URL}/depositor/deletedeposit/`;
     /* Depositor APIs END*/
+
+    //Blog API's Start
+
+    static CREATE_BLOG = `${BASE_URL}/blogs/create`;
+    static GET_ALL_BLOGS = `${BASE_URL}/blogs/get`;
+    static UPDATE_BLOG = `${BASE_URL}/blogs/`;
+    static DELETE_BLOG = `${BASE_URL}/blogs/`;
 }

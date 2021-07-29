@@ -71,24 +71,6 @@ function NavBarComponent() {
         imageUrl =
             "https://ui-avatars.com/api/?rounded=true" + "&name=" + identifier;
         localStorage.setItem("imageUrl", imageUrl);
-        // const params = new URLSearchParams(window.location.search);
-        // let imageUrl = "";
-        // if (params) {
-        //   let email = params.get("email");
-        //   if (email) {
-        //     email.toUpperCase();
-        //     let identifier = email.substring(0, 2);
-        //     imageUrl =
-        //       "https://ui-avatars.com/api/?rounded=true" + "&name=" + identifier;
-        //     localStorage.setItem("imageUrl", imageUrl);
-        //   } else {
-        //     imageUrl = localStorage.getItem("imageUrl");
-        //   }
-        // } else {
-        //   if (localStorage.getItem("imageUrl")) {
-        //     imageUrl = localStorage.getItem("imageUrl");
-        //   }
-        // }
         navBarEndDisplayHtml.push(
             <div className="navbar-end">
                 <div className="navbar-item">
@@ -193,6 +175,9 @@ function NavBarComponent() {
             <div id="enviNavBar" className="navbar-menu px-6">
                 <div className="navbar-end">
                     <NavBarDropDownItemComponent menu_data={menu_data}/>
+                    <a className="navbar-item" href="/blogs">
+                        Blogs
+                    </a>
                     {(isDepositorLoggedIn() ?
                         <a className="navbar-item" href="/depositor">
                             Depositor

@@ -6,6 +6,7 @@ import PatronHome from "./component/Patron/PatronHome/PatronHome";
 import LandingPage from "./component/Home/DepositorLandingPage";
 import Depositor from "./component/DepositorManagement/DepositorHome/DepositorHome";
 import Collector from "./component/CollectionManagement/CollectorHome";
+import BlogPage from "./component/BlogComponent/BlogLandingComponent";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
+            <Route exact path="/blogs" component={BlogPage}/>
           {(localStorage.getItem("token") != undefined) ?
             <>
               <Route exact path="/patron" component={PatronMember} />
