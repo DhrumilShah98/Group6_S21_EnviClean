@@ -8,25 +8,28 @@ function BlogLandingComponent() {
     const [blogCreationModalComponentState, setBlogCreationModalComponentState] = useState(false);
     return (
         <div>
-            <BlogItemComponent />
-            <div className="columns">
-                <div className="column has-text-centered">
-                    <a className="button is-primary"
-                       id="createBlogButton"
-                       onClick={() =>
-                           setBlogCreationModalComponentState(!blogCreationModalComponentState)
-                       }
-                    >
-                        Create
-                    </a>
+            <BlogItemComponent/>
+            {localStorage.getItem("isSuperAdmin") ?
+                <>
+                <div className="columns">
+                    <div className="column has-text-centered">
+                        <a className="button is-primary"
+                           id="createBlogButton"
+                           onClick={() =>
+                               setBlogCreationModalComponentState(!blogCreationModalComponentState)
+                           }>
+                            Create
+                        </a>
+                    </div>
+                    <BlogCreationModalComponent
+                        closeModal={() =>
+                            setBlogCreationModalComponentState(!blogCreationModalComponentState)
+                        }
+                        modalState={blogCreationModalComponentState}
+                    />
                 </div>
-                <BlogCreationModalComponent
-                    closeModal={() =>
-                        setBlogCreationModalComponentState(!blogCreationModalComponentState)
-                    }
-                    modalState={blogCreationModalComponentState}
-                />
-            </div>
+                </>
+                : <div/>}
             <Footer/>
         </div>
     );
