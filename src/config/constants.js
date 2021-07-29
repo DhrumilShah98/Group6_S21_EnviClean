@@ -1,5 +1,5 @@
 /* Author Vishal Dipak Parmar */
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'http://envicleanapi.herokuapp.com';
 export class Constants {
 
     /* User Managment APIS Start */
