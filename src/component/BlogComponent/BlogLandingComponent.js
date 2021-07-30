@@ -9,7 +9,7 @@ function BlogLandingComponent() {
     return (
         <div>
             <BlogItemComponent/>
-            {JSON.parse(localStorage.getItem("user")).isSuperAdmin ?
+            {localStorage.getItem("user") && JSON.parse(localStorage.getItem("user")).isSuperAdmin ?
                 <>
                 <div className="columns">
                     <div className="column has-text-centered">
