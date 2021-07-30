@@ -45,7 +45,7 @@ function BlogItemComponent() {
                 console.log(err);
             }
         });
-    });
+    }, []);
 
     return (
         <div className="py-6">
