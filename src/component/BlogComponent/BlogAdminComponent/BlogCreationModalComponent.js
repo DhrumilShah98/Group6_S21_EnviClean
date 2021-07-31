@@ -34,6 +34,7 @@ function BlogCreationModalComponent(props) {
         savedMessageContent.push(
             <div className="notification is-primary">
                 <button className="delete" onClick={handleCloseNotification}>
+                </button>
                 Hurray!! Preference saved!
             </div>
         );
