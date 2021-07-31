@@ -9,6 +9,11 @@ function BlogCreationModalComponent(props) {
         return null;
     }
 
+    function handleCloseNotification(event) {
+        event.preventDefault();
+        setSavedMessage("");
+    }
+
     function handleSave(event) {
         event.preventDefault();
         let options = {};
@@ -25,6 +30,14 @@ function BlogCreationModalComponent(props) {
                 console.log(err);
             }
         });
+        let savedMessageContent = [];
+        savedMessageContent.push(
+            <div className="notification is-primary">
+                <button className="delete" onClick={handleCloseNotification}>
+                Hurray!! Preference saved!
+            </div>
+        );
+        setSavedMessage(savedMessageContent);
     }
 
     return (
@@ -49,25 +62,29 @@ function BlogCreationModalComponent(props) {
                         <div className="field">
                             <label className="label">Caption</label>
                             <div className="control">
-                                <input id="blogCaption" className="input" type="text" placeholder="Enter suitable Caption" required/>
+                                <input id="blogCaption" className="input" type="text"
+                                       placeholder="Enter suitable Caption" required/>
                             </div>
                         </div>
                         <div className="field">
                             <label className="label">Summary</label>
                             <div className="control">
-                                <textarea id="blogSummary" className="textarea" placeholder="Provide summary of 250 words" maxLength="250" required/>
+                                <textarea id="blogSummary" className="textarea"
+                                          placeholder="Provide summary of 250 words" maxLength="250" required/>
                             </div>
                         </div>
                         <div className="field">
                             <label className="label">Link to actual post</label>
                             <div className="control">
-                                <input id="blogDetailURL" className="input" type="text" placeholder="Link to actual post" required/>
+                                <input id="blogDetailURL" className="input" type="text"
+                                       placeholder="Link to actual post" required/>
                             </div>
                         </div>
                         <div className="field">
                             <label className="label">Image Link</label>
                             <div className="control">
-                                <input id="blogImageURL" className="input" type="text" placeholder="Thumbnail image link for the post" required/>
+                                <input id="blogImageURL" className="input" type="text"
+                                       placeholder="Thumbnail image link for the post" required/>
                             </div>
                         </div>
                         <div className="field has-text-centered">
